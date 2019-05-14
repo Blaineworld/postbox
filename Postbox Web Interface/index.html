@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Postbox</title>
+		<link rel="stylesheet" href="stylesheet.css" />
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<h1>Postbox</h1>
+		<div id="posts">
+			<div id="padding"></div>
+		</div>
+		<div id="gui">
+			<button class="emoji" onclick="writegui.style.transform='none';writegui.style.opacity='0.98'" style="position:absolute;bottom:1vh;right:1vw;font-size:200%" title="Write a Post">✏️ Compose</button>
+		</div>
+		<div id="writegui">
+			<button onclick="writegui.style.transform='translateY(75.75vh) scale(-0.5)';writegui.style.opacity='0.25';nope.innerText=inputtitle.value=inputcontent.value=''" title="Cancel" id="cancelbutton">X</button>
+			<span id="nope"></span>
+			<br></br>
+			<input type="text" placeholder="Untitled" id="inputtitle" title="Post Title Box"></textarea>
+			<hr></hr>
+			<textarea placeholder="Content" id="inputcontent" title="Post Body Text Box"></textarea>
+			<button style="top: 1.25vh;right:3vw;position:fixed" onclick="try{render(postbox.read(postbox(inputcontent.value,inputtitle.value)));cancelbutton.click()}catch(error){nope.innerText=error;throw error}"><b>PUT IT UP!</b></button>
+		</div>
+		<script language "Javascript" src="showdown.js"></script>
+		<script language "Javascript" src="postbox.js"></script>
+		<script language="Javascript" src="script.js"></script>
+	</body>
+</html>

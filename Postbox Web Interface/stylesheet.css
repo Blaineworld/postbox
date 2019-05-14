@@ -1,0 +1,52 @@
+::selection {
+	background: papayaWhip;
+}
+
+.post * {
+	margin: 0;
+}
+
+.post a {
+	color: cornFlowerBlue;
+	transition: 1s color;
+}
+
+.post a:active {
+	color: steelBlue;
+}
+
+.post a:visited {
+	color: fuchsia;
+}
+
+.post a:visited:active {
+	color: brown;
+}
+
+.post a:disabled {
+	color: rosyBrown;
+}
+
+.post h1, .post h2, .post h3, .post h4, .post h5, .post h6 {
+	font-family: Georgia, serif;
+}
+
+.post blockquote {
+	display: inline-block;
+	font-weight: light;
+	margin-left: 1.25ch;
+	position: relative;
+}
+
+.post blockquote::before {
+	color: red;
+	content: '“';
+	display: inline-block;
+	height: 0;
+	font-weight: bold;
+	font-size: 20pt;
+	left: 0;
+	line-height: 0;
+	position: absolute;
+	top: 0;
+}
