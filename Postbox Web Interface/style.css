@@ -98,6 +98,7 @@ input::selection, textarea::selection {
 	border-radius: 69ch;
 	box-shadow: 0 0 0.2ch black inset;
 	color: white;
+	cursor: default;
 	display: inline-block;
 	font-family: Courier, Courier New, monospace;
 	font-size: 9pt;
@@ -122,6 +123,9 @@ input::selection, textarea::selection {
 	text-shadow: 0 0 0.05ch white;
 }
 
+.points::selection {
+}
+
 .post {
 	background: #2c3038;
 	border: none;
@@ -131,6 +135,7 @@ input::selection, textarea::selection {
 	margin-top: 1ch;
 	padding: 1ch;
 	padding-top: 0.5ch;
+	position: relative;
 	white-space: pre-wrap;
 }
 
@@ -138,6 +143,7 @@ input::selection, textarea::selection {
 	background: #c8c4c0;
 	border-radius: 1024pt;
 	color: #181c20;
+	cursor: default;
 	font-family: Georgia, serif;
 	font-weight: bold;
 	padding: 0 0.5ch;
@@ -156,6 +162,47 @@ input::selection, textarea::selection {
 .post > legend > .date::selection {
 }
 
+.vote {
+	background: darkGray;
+	border-radius: 42069px;
+	box-shadow: 0.125ch 0.125ch 0.1ch #fff6 inset, -0.125ch -0.125ch 0.1ch #0006 inset;
+	cursor: default;
+	font-family: Courier New, Courier, monospace;
+	padding: 0.25ch 0.5ch;
+	position: absolute;
+	right: 1ch;
+	text-align: center;
+	-webkit-user-select: none;
+}
+
+.vote-down, .vote-up {
+	bottom: 0.125ch;
+	cursor: pointer;
+	font-size: 80%;
+	padding: 0 1pt;
+	position: relative;
+	text-shadow: 0 0.125ch black;
+	transition: 5s color;
+}
+
+.vote-down:hover, .vote-up:hover {
+	bottom: 0.25ch;
+	text-shadow: 0 0.25ch black;
+}
+
+.vote-down:active, .vote-up:active {
+	bottom: 0;
+	text-shadow: 0 0 black;
+}
+
+.vote-down {
+	color: red;
+}
+
+.vote-up {
+	color: lime;
+}
+
 #gui {
 	background: #484c50;
 	bottom: 0;
@@ -165,6 +212,40 @@ input::selection, textarea::selection {
 	padding: 0.25ch;
 	position: absolute;
 	right: 0;
+}
+
+#help-button {
+	background: white;
+	background: radial-gradient(white 50%, transparent 75%), radial-gradient(circle at bottom right, dimGray, white 75%);
+	border-radius: 100%;
+	color: darkBlue;
+	cursor: pointer;
+	font-size: 6.25ch;
+	font-weight: bold;
+	height: 2ch;
+	line-height: 125%;
+	position: fixed;
+	right: -0.4ch;
+	text-align: center;
+	top: -0.4ch;
+	transform: none;
+	transition-duration: 1s;
+	transition-property: transform;
+	-webkit-user-select: none;
+	width: 2ch;
+}
+
+#help-button:hover {
+	transform: scale(1.1);
+}
+
+#help-button:active {
+	transform: scale(0.9);
+	transition-duration: 0.05s;
+	transition-timing-function: ease-in;
+}
+
+#help-button::selection {
 }
 
 #inputtitle, #inputcontent {
@@ -189,6 +270,10 @@ input::selection, textarea::selection {
 	bottom: 0;
 	height: 20ch;
 	width: 100%;
+}
+
+#post-id {
+	display: none;
 }
 
 #posts {

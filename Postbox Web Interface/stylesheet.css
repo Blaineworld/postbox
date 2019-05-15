@@ -27,10 +27,6 @@
 	color: rosyBrown;
 }
 
-.post h1, .post h2, .post h3, .post h4, .post h5, .post h6 {
-	font-family: Georgia, serif;
-}
-
 .post blockquote {
 	display: inline-block;
 	font-weight: light;
@@ -38,7 +34,15 @@
 	position: relative;
 }
 
+.post blockquote::selection {
+	background-color: #8008;
+	color: white;
+}
+
 .post blockquote::before {
+	background: khaki;
+	border-radius: 0.4ch;
+	box-shadow: 0 0.25ch 0.5ch black inset;
 	color: red;
 	content: '“';
 	display: inline-block;
@@ -49,4 +53,57 @@
 	line-height: 0;
 	position: absolute;
 	top: 0;
+}
+
+.post blockquote::before::selection {
+}
+
+.post code {
+	background: lightGray;
+	border-radius: 0.25ch;
+	box-shadow: 0 0.08ch 0.125ch black inset;
+	color: black;
+	cursor: copy;
+	display: inline-block;
+	padding: 0.125ch;
+	transition-duration: 1s;
+	transition-property: background, color;
+}
+
+.post code::selection {
+	background: #8008;
+	color: white;
+}
+
+.post code:hover {
+	background: #202020;
+	color: lime;
+}
+
+.post code:hover::selection, .post code:hover:active {
+	background: lime;
+	color: #202020;
+	cursor: text;
+}
+
+.post code:hover:active::selection {
+	background: #202020;
+	color: lime;
+}
+
+.post h1, .post h2, .post h3, .post h4, .post h5, .post h6 {
+	font-family: Georgia, serif;
+}
+
+.post li {
+	cursor: copy;
+	transition: 1s color;
+}
+
+.post li:hover {
+	color: white;
+}
+
+.post li:active {
+	cursor: text;
 }

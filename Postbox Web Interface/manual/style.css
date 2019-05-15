@@ -1,0 +1,81 @@
+a {
+	cursor: default;
+}
+
+body {
+	background: #d8dce0;
+	color: black;
+	font-family: Courier, Courier New, monospace;
+	font-size: calc(9pt + (0.5vmin + 0.5vmax ) / 2);
+	font-variant-numeric: slashed-zero tabular-nums;
+	line-height: 1;
+	padding-top: 1ch;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 1.25% 0;
+}
+
+h1 {
+	font-size: 250%;
+}
+
+h2 {
+	font-size: 225%;
+}
+
+h3 {
+	font-size: 200%;
+}
+
+h4 {
+	font-size: 175%;
+}
+
+h5 {
+	font-size: 150%;
+}
+
+h6 {
+	font-size: 125%;
+}
+
+hr {
+	background: black;
+	border: 0.25ch solid black;
+	border-radius: 50% 100% 100% 50%;
+	margin: 2.5% 0;
+}
+
+p {
+	max-width: 66%;
+	text-indentation: 2ch;
+}
+
+summary, #table-of-contents a, .selectnt, .selectnt * {
+	cursor: default;
+	-webkit-user-select: none;
+}
+
+summary::selection, #table-of-contents a::selection, .selectnt::selection, .selectnt *::selection {
+}
+
+#bar {
+	background: white;
+	box-shadow: 0 0 0.75ch black;
+	color: gray;
+	left: 0;
+	min-height: 2.5ch;
+	position: fixed;
+	right: 0;
+	top: 0;
+	transition: 0.25s box-shadow;
+}
+
+#bar:hover {
+	box-shadow: 0 0 1ch black;
+}
+
+#bar:active {
+	box-shadow: 0 0 0.5ch black;
+}
