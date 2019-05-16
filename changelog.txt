@@ -1,0 +1,52 @@
+--    Alpha 0.2    --
+
+  + Added this changelog! :)
+
+  + Hovering the mouse over a post's title now shows its ID.
+
+  + Introduced an upvote / downvote system, currently known as "points."
+    Posts may be upvoted or downvoted every five minutes. Once a post is
+    voted, five minutes must pass before another post can be voted. The
+    cooldown might be changed in the future to prevent addictions to
+    self-upvoting, but it's basically like Reddit but with cooldowns.
+    Making it actually took much longer than I thought it would.
+
+  + Introduced new styles for <code> elements, which are now also copied
+    automatically just by triple-clicking them, because we all copy half
+    our code from GitHub. The other 90% is from StackOverflow. When you
+    hover over it, it fades in to a very l33t color scheme.
+
+  + List items now glow white when hovered over and are now copied with
+    a triple-click.
+
+  + There's a manual now! Access it with the button in the top right.
+    It's not even close to being ready though.
+
+  + Tried to add the auto-deletion thing the manual mentions but it was
+    saying some date in 1970 for absolutely no reason and it makes me so
+    freaking mad!!!!!!!!!! That's why I disabled it and you won't see it
+    in this release. Hopefully I can fix whatever this heckin' bug is.
+
+  * Improved the block quote styles.
+
+  * Posts are now sorted by their newness AND their score (since scores just got added).
+
+  * Tweaked what cursors are used where.
+
+--   Alpha 0.2.1   --
+
+  + Added this to the change log.
+
+  + Established that the names of update commits will use lowercase for the word update.
+
+  + Fixed the post dates and by extension the auto-removal system! Yay!
+    Turns out I was multiplying the character codes by multiples of 256
+    instead of 65536, because UTF-16, you know... is literally UTF-*16*.
+
+  + Wrote a bit more of the manual.
+
+--   Alpha 0.2.2   --
+
+  + (Attempted) to add the change log and manual to README.md inside <iframe>s.
+
+--                 --
