@@ -27,7 +27,7 @@ for (var i = 0; i < ids.length; i++) {
 }
 
 p.sort(function(a, b) {
-	return (a.date - b.date) + ((a.points - b.points) * 100000);
+	return (a.date - b.date) + ((a.points - b.points) * 75000);
 });
 
 for (var i = 0; i < p.length; i++) {

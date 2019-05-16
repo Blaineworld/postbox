@@ -33,4 +33,16 @@
 
   * Tweaked what cursors are used where.
 
+--   Alpha 0.2.1   --
+
+  + Added this to the change log.
+
+  + Established that the names of update commits will use lowercase for the word update.
+
+  + Fixed the post dates and by extension the auto-removal system! Yay!
+    Turns out I was multiplying the character codes by multiples of 256
+    instead of 65536, because UTF-16, you know... is literally UTF-*16*.
+
+  + Wrote a bit more of the manual.
+
 --                 --

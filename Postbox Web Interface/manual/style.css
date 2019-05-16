@@ -4,12 +4,20 @@ a {
 
 body {
 	background: #d8dce0;
+	background: radial-gradient(circle at bottom right, rosyBrown 59.9%, transparent 60.1%), radial-gradient(circle at left, cornFlowerBlue 74.9%, transparent 75.1%), #d8dce0;
 	color: black;
 	font-family: Courier, Courier New, monospace;
 	font-size: calc(9pt + (0.5vmin + 0.5vmax ) / 2);
 	font-variant-numeric: slashed-zero tabular-nums;
 	line-height: 1;
 	padding-top: 1ch;
+}
+
+code {
+	background: #202020;
+	border-radius: 0.5ch;
+	color: lime;
+	padding: 0 0.25ch;
 }
 
 h1, h2, h3, h4, h5, h6 {
