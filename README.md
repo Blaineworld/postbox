@@ -1,3 +1,1 @@
-hopefully this works.
-<iframe src="./manual/index.html"></iframe>
-<iframe src="./changelog.txt"></iframe>
+Heck! Does it work with [links](./manual/index.html)?
