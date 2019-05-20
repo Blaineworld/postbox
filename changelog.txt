@@ -1,3 +1,12 @@
+GUIDE TO BULLET POINTS (will always be in this order)
+  - removed something
+  + added something
+  * changed something
+  i bug fix
+  ~ internal change
+  ? w.i.p feature
+  ! known bug
+
 --    Alpha 0.2    --
 
   + Added this changelog! :)
@@ -45,8 +54,22 @@
 
   + Wrote a bit more of the manual.
 
---   Alpha 0.2.2   --
+--    Alpha 0.3    --
 
-  + (Attempted) to add the change log and manual to README.md inside <iframe>s.
+  + Downvotes actually exist now!
+
+  + The manual now includes an incomplete section all about Markdown.
+
+  + The translation engine now supports multiple variables.
+
+  * It is now COMPLETELY impossible for posts to overwrite each other. In addition to
+    this, post IDs now consist of 5 characters instead of 4.
+
+  i Removed all the bad code. What did it cost? All of the code. Basically, I just
+    rewrote postbox.js because it was a buggy mess.
+
+  ~ Most numbers are now stored as base-36 because I'm terrible.
+
+  ~ The translation engine is now a separate script that the Postbox engine depends on.
 
 --                 --

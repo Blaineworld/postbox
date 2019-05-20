@@ -1,9 +1,10 @@
-// Display all the posts...
-inputtitle.placeholder = postbox.translate("gui.post.titlePlaceholder", inputtitle.maxLength = postbox.getTitleCharacterLimit());
-inputcontent.placeholder = postbox.translate("gui.post.contentPlaceholder", inputcontent.maxLength = postbox.getCharacterLimit());
+var titleSize = postbox.titleSize(), bodySize = postbox.bodySize();
+
+inputtitle.placeholder = translate("ui.placeholder.title", inputtitle.minLength = titleSize.min, inputtitle.maxLength = titleSize.max);
+inputcontent.placeholder = translate("ui.placeholder.content", inputcontent.minLength = bodySize.min, inputcontent.maxLength = bodySize.max);
 
 var noVoteStyles = document.querySelector("#no-vote-styles");
-setTimeout(disableNoVoteStyles, postbox.voteCooldown());
+setTimeout(disableNoVoteStyles, postbox.voteCooldown() * 1000);
 
 function render(post) {
 	// Render a post.
@@ -16,27 +17,34 @@ function render(post) {
 	e.title = "ID: " + post.identifier;
 }
 
-postbox.removeExpired();
-setInterval(postbox.removeExpired, 120000); // Remove old posts every ~2 minutes.
+postbox.removeExpiredPosts();
+setInterval(postbox.removeExpiredPosts, 300000); // Remove old posts every ~5 minutes.
 
-var p = [];
-
-var ids = postbox.list();
-for (var i = 0; i < ids.length; i++) {
-	p.push(postbox.read(ids[i]));
-}
-
-p.sort(function(a, b) {
+function sortFunction(a, b) {
 	return (a.date - b.date) + ((a.points - b.points) * 75000);
-});
-
-for (var i = 0; i < p.length; i++) {
-	render(p[i]);
 }
 
 function disableNoVoteStyles() {
 	noVoteStyles.disabled = true;
 }
+
+function renderPosts() {
+	posts.innerHTML = "";
+
+	var p = [];
+
+	var ids = postbox.allPostIDs();
+	for (var i = 0; i < ids.length; i++) {
+		p.push(postbox.read(ids[i]));
+	}
+
+	for (var i = 0; i < p.length; i++) {
+		render(p[i]);
+	}
+	p.sort(sortFunction);
+}
+
+renderPosts();
 
 addEventListener("click", function(event) {
 	if (event.detail === 3) {
@@ -53,8 +61,9 @@ addEventListener("click", function(event) {
 				postbox.upvote(event.target.parentElement.parentElement.parentElement.querySelector("#post-id").innerText);
 				event.target.parentElement.querySelector("#points").innerText++;
 			}
+			renderPosts();
 			noVoteStyles.disabled = false;
-			setTimeout(disableNoVoteStyles, postbox.voteCooldown());
+			setTimeout(disableNoVoteStyles, postbox.voteCooldown() * 1000);
 		}
 	}
 });

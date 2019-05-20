@@ -1,257 +1,220 @@
 'use strict';
 
+/* If you edit this file and you aren't supposed to you're a furry. */
+
+/* # Translation Strings */
+translate.register({
+	"error.cooldown": "You need to wait %s longer.",
+	"error.post.nullsInTitle": "Your post's title contains null characters. Null characters are used to separate post components, so please remove them.",
+	"error.post.titleTooLong": "Your title is %s characters long, but should be at most %s.",
+	"error.post.titleTooShort": "Your title is %s characters long, but should be at least %s.",
+	"error.post.tooLong": "Your post is %s characters long, but should be at most %s.",
+	"error.post.tooShort": "Your post is %s characters long, but should be at least %s.",
+	"error.readPost.nonexistent": "The post %s does not exist!",
+	"error.readPost.wrongNullCount": "The data for post %s contains %s null characters, but should contain %s.",
+	"test": "Hello, world!",
+	"test.data": "Hello, %s!",
+	"test.multiple": "%s, %s.",
+	"ui.placeholder.content": "Speak your mind in %s-%s characters. Don't say anything bad; we will find you! (partial joke) You can also use Markdown to format your post. You can read more on formatting in the manual.",
+	"ui.placeholder.title": "Write a descriptive title of %s-%s characters."
+});
+
+/* # Main */
+
 {
-	// Various configurations and things, which are only to be modified by people who are supposed to do that, otherwise you're a gay furry.
-	let languageStrings = {
-		"admin.warning": "\n~~ if you aren't an admin, your r arted you indent your code with spaces instead of tabs. ~~",
-		"gui.nope": "Nope",
-		"gui.nope.cooldown": "That has been done too recently. Please wait for %s before trying again.",
-		"gui.nonexistent": "That %s does not exist!",
-		"gui.nope.tooFewCharacters": "Your post is too short. Use least %s characters.",
-		"gui.post.contentPlaceholder": "Speak your mind. Format it using Markdown if you want to. You can use up to %s characters, but don't say anything mean because there's no such thing as unposting!",
-		"gui.post.titlePlaceholder": "Optionally, write a descriptive title of at most %s characters.",
-		"security.linkXXS": "I am an idiot and I tried to make you run the following Javascript:\n\n",
-		"week.day.sunday": "Sunday",
-		"week.day.monday": "Monday",
-		"week.day.tuesday": "Tuesday",
-		"week.day.wednesday": "Wednesday",
-		"week.day.thursday": "Thursday",
-		"week.day.friday": "Friday",
-		"week.day.saturday": "Saturday",
-		"week.day.today": "Today"
-	}; // Translation strings. They use %s like in Minecraft.
-	let postBodyLimit = 960; // The character limit for post content.
-	let postBodyMin = 10; // The smallest number of characters a post can have.
-	let postCooldown = 600; // The post cooldown time in seconds.
-	let postExistence = 86400000; // The number of seconds a post normally exists for.
-	let postTitleLimit = 50; // The character limit for post titles.
-	let voteCooldown = 300; // The post cooldown time in seconds.
-	let voteInfluence = 150; // The number of seconds added per upvote.
-	let weekdays = [
-		"week.day.sunday",
-		"week.day.monday",
-		"week.day.tuesday",
-		"week.day.wednesday",
-		"week.day.thursday",
-		"week.day.friday",
-		"week.day.saturday",
-		"week.day.today"
-	]; // The names of each week. The eighth one is shown for days that are today.
+	/* # Configurations */
+	let postBodyMin = 40; // Smallest number of characters posts can have.
+	let postBodyMax = 960; // Largest number of characters posts can have.
+	let postCooldown = 900; // The wait period for posting in seconds.
+	let postExistence = 86400; // Base post existence in seconds.
+	let postIDLength = 5; // The number of characters to use in a post ID.
+	let postTitleMin = 9; // Smallest number of characters titles can have.
+	let postTitleMax = 50; // Largest number of characters titles can have.
 
+	let voteCooldown = 300; // The wait period for voting in seconds.
+	let voteInfluence = 150; // Number of seconds added per vote.
+
+	let reverseSandbox = false; // Hide storage from the outside world.
+
+	/* # Constants */
+	const NULL = String.fromCharCode(0);
+
+	/* # Declarations */
 	let converter = new showdown.Converter();
+	let ls = localStorage;
 
-	function inThisWeek(d) {
-		// from Bálint on StackOverflow
-		// I'm surprised I don't have more code in here from StackOverflow...
-		var target  = new Date(d.valueOf());
-		var dayNr   = (d.getDay() + 6) % 7;
-		target.setDate(target.getDate() - dayNr + 3);
-		var jan4    = new Date(target.getFullYear(), 0, 4);
-		var dayDiff = (target - jan4) / 86400000;
-		var weekNr = 1 + Math.ceil(dayDiff / 7);
-		return weekNr;
+	/* # Helper Functions */
+	function digits(num, count = 2) {
+		return "'".repeat(String(num).length > count) + "0".repeat(Math.max(0, count - String(num).length)) + String(num).substring(String(num).length - count);
 	}
 
-	function sameDay(d1, d2) {
-		// from Pointy on StackOverflow
-		// I think I've spoken too soon...
-		return d1.getFullYear() === d2.getFullYear() &&
-			d1.getMonth() === d2.getMonth() &&
-			d1.getDate() === d2.getDate();
+	function plural(noun, count = 2) {
+		if (Math.abs(count) <= 1)
+			return String(noun);
+		return String(noun) + "s";
 	}
 
-	function digits(int, digits = 2, apostrophe = true) {
-		// actually not from StackOverflow
-		// I wrote this one myself. Pretty unusual, right?
-		var n = Math.round(int);
-		if (n !== n)
-			return "??";
-		n = String(n);
-		return "0".repeat(digits - n.substring(n.length - digits).length) + n.substring(n.length - digits);
+	function formatDate(date) {
+		// Format an amount of time.
+		return digits(date.getDate()) + "/" + digits(date.getMonth() + 1) + "/" + digits(date.getFullYear()) + " @ " + digits(date.getHours()) + ":" + digits(date.getMinutes());
 	}
 
-	function methodTranslate(string, data = "%s") {
-		// Get a language string by name.
-		if (string in languageStrings)
-			return String(languageStrings[string]).replace(/%s/g, data);
-		return String(string);
+	function formatTime(ms) {
+		// Format an amount of time.
+		var t = Number(ms);
+		if (t !== t)
+			return "meep";
+		if (t < 1000)
+			return Math.ceil(t) + plural(" millisecond", t);
+		if ((t = Math.ceil(t / 1000)) < 60)
+			return t + plural(" second", t);
+		if ((t = Math.ceil(t / 60)) < 60)
+			return t + plural(" minute", t);
+		if ((t = Math.ceil(t / 60)) < 24)
+			return t + plural(" hour", t);
+		if ((t = Math.ceil(t / 24)) < 7)
+			return t + plural(" day", t);
+		return Math.ceil(t / 7) + plural(" week", Math.ceil(t / 7));
 	}
 
-	// Security Measure #1: Give only this block access to localStorage.
-	// It ain't much, but it's honest work.
-	let ls = window.localStorage;
-	delete window.localStorage;
-
-	let ascii = String.fromCharCode(0) + "	\n\r !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~€ ‚ƒ„…†‡ˆ‰Š‹Œ Ž  ‘’“”•–—˜™š›œ žŸ ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ";
-
-	function methodCooldown() {
-		// Get the amount of time until anyone can post.
-		return Math.max(0, postCooldown * 1000 - (Date.now() - methodLast())) || 0;
+	/* # Methods */
+	function methodAllPostIDs() {
+		// What are all of the existing post IDs?
+		var ids = [];
+		for (var i = 0, k; i < ls.length; i++)
+			if ((k = ls.key(i)).substring(0, 5) === "POST-")
+				ids.push(k.replace("POST-", ""));
+		return ids;
 	}
 
-	function methodCreate(postText, title = "") {
-		// Create a post in memory.
-		var c = Math.ceil(methodCooldown() / 1000), t = Date.now(), T = "";
-		if (String(postText).length < postBodyMin)
-			throw methodTranslate("gui.nope") + ": " + methodTranslate("gui.nope.tooFewCharacters", postBodyMin);
-		if (c > 0)
-			throw methodTranslate("gui.nope") + ": " + methodTranslate("gui.nope.cooldown", digits(Math.floor(c / 60)) + ":" + digits(Math.floor(c % 60)));
-		t = t.toString(16);
-		t = "0".repeat(16 - t.length) + t;
-		ls.setItem("DATA-pt", t = String.fromCharCode("0x" + t.substring(0, 4)) + String.fromCharCode("0x" + t.substring(4, 8)) + String.fromCharCode("0x" + t.substring(8, 12)) + String.fromCharCode("0x" + t.substring(12, 16)));
-		var id = String.fromCharCode(Math.round(32 + Math.random() * 95)) +  String.fromCharCode(Math.round(32 + Math.random() * 95)) + String.fromCharCode(Math.round(32 + Math.random() * 95)) + String.fromCharCode(Math.round(32 + Math.random() * 95));
-		ls.setItem("POST-" + id, ascii[0].repeat(2) + ascii[1] + t + String(title).substring(0, postTitleLimit) + ascii[0] + String(postText).substring(0, postBodyLimit));
+	function methodBodySize() {
+		// How long can and should my post be?
+		return {
+			"min": postBodyMin,
+			"max": postBodyMax
+		};
+	}
+
+	function methodDownvote(id) {
+		// Decrease a post's score by one point.
+		var object = methodRead(id), cooldown = methodVoteCooldown();
+		if (cooldown)
+			throw translate("error.cooldown", formatTime(cooldown * 1000));
+		ls.setItem("POST-" + id, (--object.points).toString(36) + object.raw.substring(object.raw.indexOf(NULL)));
+		ls.setItem("DATA-vt", Date.now().toString(36));
+		return object.points;
+	}
+
+	function methodGeneratePostID() {
+		// Generate a new unique post ID.
+		var id = "", i;
+		while (!id || ls.getItem("POST-" + id))
+			for (i = Number(id = ""); i < postIDLength; i++)
+				id += String.fromCharCode(Math.round(Math.random() * 94) + 32);
 		return id;
 	}
 
-	let methodDownvote;
-
-	function methodGetCharacterLimit() {
-		// Get the maximum number of characters you can use in the body of a post.
-		return postBodyLimit;
+	function methodPost(bodyText, titleText = "") {
+		var content = String(bodyText), title = String(titleText), id = methodGeneratePostID(), cooldown = methodPostCooldown();
+		if (content.length < postBodyMin)
+			throw translate("error.post.tooShort", content.length, postTitleMin);
+		if (content.length > postBodyMax)
+			throw translate("error.post.tooLong", content.length, postTitleMax);
+		if (title.length < postTitleMin)
+			throw translate("error.post.titleTooShort", title.length, postTitleMin);
+		if (title.length > postTitleMax)
+			throw translate("error.post.titleTooLong", title.length, postTitleMax);
+		if (title.includes("\0"))
+			throw translate("error.post.nullsInTitle");
+		if (cooldown)
+			throw translate("error.cooldown", formatTime(cooldown * 1000));
+		ls.setItem("DATA-pt", Date.now().toString(36));
+		ls.setItem("POST-" + id, "1" + NULL + Date.now().toString(36) + NULL + title + NULL + content);
+		return id;
 	}
 
-	function methodGetTitleCharacterLimit() {
-		// Get the maximum number of characters you can use in the title of a post.
-		return postTitleLimit;
+	function methodPostCooldown() {
+		// How many seconds until I can post again?
+		return (Math.max(0, postCooldown * 1000 - (Date.now() - parseInt(ls.getItem("DATA-pt") || "0", 36))) || 0) / 1000;
 	}
 
-	function methodHardReset() {
-		// ADMIN: Delete everything.
-		for (var i = 0; i < ls.length; ls.removeItem(ls.key(i)));
-		return "Everything has been deleted. " + methodTranslate("admin.warning");
+	function methodRead(id) {
+		// Read a specific post, or throw an error if something goes wrong.
+		var raw = ls.getItem("POST-" + id), object = {
+			"raw": raw,
+			"markdown": "",
+			"html": "",
+			"identifier": String(id)
+		}, currentNull = 0, nulls = (String(raw).match(/\0/g) || []).length;
+		if (raw === null)
+			throw translate("error.readPost.nonexistent", id);
+		if (nulls !== 3)
+			throw translate("error.readPost.wrongNullCount", id, nulls, 3);
+		object.points = parseInt(raw.substring(0, currentNull = raw.indexOf(NULL)), 36) || 0;
+		(object.date = new Date()).setTime(parseInt(raw.substring(currentNull + 1, currentNull = raw.indexOf(NULL, currentNull + 1)), 36) || 0);
+		object.posted = formatDate(object.date);
+		object.title = raw.substring(currentNull + 1, currentNull = raw.indexOf(NULL, currentNull + 1));
+		if (!object.title)
+			delete object.title;
+		object.markdown = raw.substring(currentNull + 1, raw.length);
+		object.html = converter.makeHtml(object.markdown);
+		object.removalTime = Number(object.date) + postExistence * 1000 + object.points * voteInfluence;
+		return object;
 	}
 
-	function methodLast() {
-		// Get the most recent time somebody posted.
-		var d = ls.getItem("DATA-pt") || "";
-		return 281474976710656 * d.charCodeAt(0) + 4294967296 * d.charCodeAt(1) + 65536 * d.charCodeAt(2) + d.charCodeAt(3);
-	}
-
-	function methodLastVote() {
-		// Get the most recent time somebody voted on a post.
-		var d = ls.getItem("DATA-vt") || "";
-		return 281474976710656 * d.charCodeAt(0) + 4294967296 * d.charCodeAt(1) + 65536 * d.charCodeAt(2) + d.charCodeAt(3);
-	}
-
-	function methodList() {
-		// Get a list of all the existing post IDs.
-		var a = [], i = 0, k;
-		for (; i <= ls.length; i++)
-			if (k = ls.key(i))
-				if (k.substring(0, 5) === "POST-")
-					a.push(k.substring(5));
-		return a;
-	}
-
-	function methodRead(postId) {
-		// Read a post from memory.
-		var key = "POST-" + postId, data = ls.getItem(key), post = {
-			"identifier": postId
-		}, p = (4294967296 * data.charCodeAt(0) + 65536 * data.charCodeAt(1) + data.charCodeAt(2)).toString(2);
-		if ((p = "0".repeat(48 - p.length) + p)[0] === "1")
-			p = p.replace("1", "-");
-		post.points = parseInt(p, 2);
-		if (data !== ascii[0]) {
-			(post.date = new Date).setTime(281474976710656 * data.charCodeAt(3) + 4294967296 * data.charCodeAt(4) + 65536 * data.charCodeAt(5) + data.charCodeAt(6));
-			if (inThisWeek(post.date))
-				if (sameDay(post.date, new Date()))
-					post.posted = methodTranslate(weekdays[7]) + "  @ ";
-				else
-					post.posted = methodTranslate(weekdays[post.date.getDay()]) + " @ ";
-			else
-				post.posted = digits(post.date.getMonth() + 1) + "/" + digits(post.date.getDate()) + "/" + digits(post.date.getFullYear()) + " @ ";
-			post.posted += digits(post.date.getHours()) + ":" + digits(post.date.getMinutes());
-			var titleEnd = data.indexOf(ascii[0], 7);
-			post.title = data.substring(7, titleEnd).replace(/\n/g, " ");
-			post.html = converter.makeHtml((post.raw = data.substring(titleEnd + 1)).replace(/\</g, "&lt;")).replace(/\<a href="javascript:/g, "<a href=\"data:text/plain," + encodeURIComponent(methodTranslate("security.linkXXS"))).replace(/\<a /g, "<a target=\"_blank\" ");
-		} else
-			throw "Nope: The post ID '" + postId + "' doesn't exist!";
-		return post;
-	}
-
-	function methodRemove(post) {
-		// Delete a post from memory.
-		if (ls.getItem("POST-" + post) === null)
-			throw methodTranslate("nope.nonexistent", "post");
-		ls.removeItem("POST-" + post);
-		return "The post has been removed. " + methodTranslate("admin.warning");
-	}
-
-	function methodRemoveExpired() {
-		// Delete all expired posts from memory.
-		for (var a = 0, e, i = 0, k, p; i < ls.length; i++)
+	function methodRemoveExpiredPosts() {
+		// Remove all expired posts, and return the number removed.
+		var removed = 0, end = 0, object, i = 0, k;
+		for (; i < ls.length; i++)
 			if ((k = ls.key(i)).substring(0, 5) === "POST-") {
-				p = methodRead(k.replace("POST-", ""));
-				e = (p.date.getTime() / 1000 + postExistence + p.points * voteInfluence);
-				if (Date.now() / 1000 > e) {
-					console.log(k + " has been removed because it is expired.");
+				object = methodRead(k.replace("POST-", ""));
+				end = Number(object.date) + postExistence * 1000 + object.points * voteInfluence;
+				if (end < Date.now())
 					ls.removeItem(k);
-					a++;
-				} else
-					console.log(k + " will continue existing for " + (e - Date.now() / 1000) + " more seconds.");
 			}
-		return a;
+		return removed;
 	}
 
-	function methodResetCooldown() {
-		// ADMIN: Reset the post cooldown.
-		ls.removeItem("DATA-pt");
-		ls.removeItem("DATA-vt");
-		return "The cooldown has beem reset. " + methodTranslate("admin.warning");
+	function methodTitleSize() {
+		// How long can and should my title be?
+		return {
+			"min": postTitleMin,
+			"max": postTitleMax
+		};
 	}
 
-	function methodUpvote(post) {
-		// Give a post one point.
-		var c, d = ls.getItem("POST-" + post), p, t = Date.now(), points;
-		if (d === null)
-			throw methodTranslate("gui.nope") + ": " + methodTranslate("gui.nope.nonexistent", "post");
-		if (c = methodVoteCooldown())
-			throw methodTranslate("gui.nope") + ": " + methodTranslate("gui.nope.cooldown", digits(Math.floor(c / 60)) + ":" + digits(Math.floor(c % 60)));
-		p = (points = 2147483648 * d.charCodeAt(0) + 65536 * d.charCodeAt(1) + d.charCodeAt(2)).toString(2);
-		p = (++points).toString(2);
-		p = "0".repeat(48 - p.length) + p;
-		if (p[0] === "-")
-			p = p.replace("-", "0");
-		p = String.fromCharCode(parseInt(p.substring(0, 16), 2)) + String.fromCharCode(parseInt(p.substring(16, 32), 2)) + String.fromCharCode(parseInt(p.substring(32, 48), 2));
-		ls.setItem("POST-" + post, p + d.substring(3));
-		t = t.toString(16);
-		t = "0".repeat(16 - t.length) + t;
-		ls.setItem("DATA-vt", t = String.fromCharCode("0x" + t.substring(0, 4)) + String.fromCharCode("0x" + t.substring(4, 8)) + String.fromCharCode("0x" + t.substring(8, 12)) + String.fromCharCode("0x" + t.substring(12, 16)));
-		return points;
+	function methodUpvote(id) {
+		// Increase a post's score by one point.
+		var object = methodRead(id), cooldown = methodVoteCooldown();
+		if (cooldown)
+			throw translate("error.cooldown", formatTime(cooldown * 1000));
+		ls.setItem("POST-" + id, (++object.points).toString(36) + object.raw.substring(object.raw.indexOf(NULL)));
+		ls.setItem("DATA-vt", Date.now().toString(36));
+		return object.points;
 	}
 
 	function methodVoteCooldown() {
-		// Get the amount of time until anyone can vote.
-		return Math.max(0, voteCooldown * 1000 - (Date.now() - methodLastVote())) || 0;
+		// How many seconds until I can vote again?
+		return (Math.max(0, voteCooldown * 1000 - (Date.now() - parseInt(ls.getItem("DATA-vt") || "0", 36))) || 0) / 1000;
 	}
 
-	// Security Measure #4: Declare the API object as local.
-	// Again, someone might try to mess with.
+	/* # Initialization */
 	let pb = window.postbox = function createPostboxPost(content, title) {
 		// Create a Postbox post.
-		return methodCreate(content, title);
+		return methodPost(content, title);
 	};
-	pb.cooldown = methodCooldown;
-	pb.create = methodCreate;
+	pb.allPostIDs = methodAllPostIDs;
+	pb.bodySize = methodBodySize;
 	pb.downvote = methodDownvote;
-	pb.getCharacterLimit = methodGetCharacterLimit;
-	pb.getTitleCharacterLimit = methodGetTitleCharacterLimit;
-	// pb.hardReset = methodHardReset; // Security measure #5: admin methods are commented out
-	pb.last = methodLast;
-	pb.lastVote = methodLastVote;
-	pb.list = methodList;
+	pb.generatePostID = methodGeneratePostID;
+	pb.post = methodPost;
+	pb.removeExpiredPosts = methodRemoveExpiredPosts;
 	pb.read = methodRead;
-	// pb.remove = methodRemove;
-	pb.removeExpired = methodRemoveExpired;
-	// pb.resetCooldown = methodResetCooldown;
-	pb.translate = methodTranslate;
+	pb.titleSize = methodTitleSize;
 	pb.upvote = methodUpvote;
 	pb.voteCooldown = methodVoteCooldown;
 
-	addEventListener("load", function() {
-		// Security Measure #2: Delete all the scripts.
-		// Doesn't really do anything, but can reduce memory usage.
-		for (let e; e = document.getElementsByTagName("script")[0]; e.parentElement.removeChild(e));
-	});methodResetCooldown()
+	/* # Finalization */
+	if (reverseSandbox)
+		delete window.localStorage;
 }

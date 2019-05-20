@@ -136,7 +136,13 @@ input::selection, textarea::selection {
 	padding: 1ch;
 	padding-top: 0.5ch;
 	position: relative;
+}
+
+.post, .post * {
+	hyphens: auto;
 	white-space: pre-wrap;
+	word-break: break-word;
+	word-wrap: break-word;
 }
 
 .post > legend {

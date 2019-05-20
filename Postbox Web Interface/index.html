@@ -29,9 +29,10 @@
 			<input type="text" placeholder="Untitled" id="inputtitle" title="Post Title Box"></textarea>
 			<hr></hr>
 			<textarea placeholder="Content" id="inputcontent" title="Post Body Text Box"></textarea>
-			<button style="top: 1.25vh;right:3vw;position:fixed" onclick="try{render(postbox.read(postbox(inputcontent.value,inputtitle.value)));cancelbutton.click()}catch(error){nope.innerText=error;throw error}"><b>PUT IT UP!</b></button>
+			<button style="top: 1.25vh;right:3vw;position:fixed" onclick="try{render(postbox.read(postbox(inputcontent.value,inputtitle.value)));renderPosts();cancelbutton.click()}catch(error){nope.innerText=error;throw error}"><b>PUT IT UP!</b></button>
 		</div>
 		<script language "Javascript" src="showdown.js"></script>
+		<script language "Javascript" src="translate.js"></script>
 		<script language "Javascript" src="postbox.js"></script>
 		<script language="Javascript" src="script.js"></script>
 	</body>
