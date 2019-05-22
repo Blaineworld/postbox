@@ -107,4 +107,9 @@ GUIDE TO BULLET POINTS (will always be in this order)
 
   ? Going to reintroduce admin-only methods.
 
+--   Alpha 0.3.2   --
+
+  ~ Apparently the error message when your post content was outside the valid
+    character range used the title character range.
+
 --                 --
