@@ -1,0 +1,258 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Postbox Manual</title>
+		<link rel="stylesheet" href="../style.css" />
+	</head>
+	<body class="nobackground">
+		<div id="bar">
+			<a href="#escape-sequences">Escape Sequences</a> /
+			<a href="#typographical-features">Typographical Structures</a> /
+			<a href="#styles">Styles</a>
+		</div>
+		<hr></hr>
+		<small>Markdown is a markup language initially created by John Gruber and used on many sites. Of course, you don't really care and just want to see the tutorial, so here it is...</small>
+		<h3 id="escape-sequences">Escape Sequences</h3>
+		<p>In programming, an escape sequence is a sequence of characters that changes the meaning of a character to something else. A typical example of this is a string in "quotation marks" where you want to have a quotation mark in the string, so you use <code>\"</code> to tell the computer that the quotation mark is just a quotation mark and isn't the end of the string. The same thing applies in Markdown, too. You can use a <code title="backslash">\</code> to say that a character is just a character and doesn't mean anything else. For example, you might need a # in a heading, so instead of <code># # My Heading</code>, which results in a level two heading saying <i>My Heading</i>, you use <code># \# My Heading</code> so that the # is treated as just part of the text. These can be used on pretty much anything that uses a character to represent a style.</p>
+		<hr></hr>
+		<h3 id="typographical-structures">Typographical Structures</h3>
+		<h4 id="paragraphs">Paragraphs</h4>
+		<p>A paragraph, in case you somehow don't know, is a block of text that separates a piece of writing into smaller parts. In Markdown, you can create paragraphs by adding one or more lines of whitespace below a piece of text.</p>
+		<details>
+			<summary>Visual Example</summary>
+			<table>
+				<thead>
+					<tr>
+						<th>Markdown</th>
+						<th>Result</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><code>I like Markdown. Markdown is cool.</code></td>
+						<td><p>I like Markdown. Markdown is cool.</p></td>
+					</tr>
+					<tr>
+						<td>
+							<code>
+								I like Markdown.
+								<br></br>
+								Markdown is cool.
+							</code>
+						</td>
+						<td><p>I like Markdown.<br></br>Markdown is cool.</p></td>
+					</tr>
+				</tbody>
+			</table>
+		</details>
+		<h4 id="headings">Headings</h4>
+		<p>There are two ways to make headings in Markdown. The first one is with 1-6 <code>#</code>s depending on the level of your heading like <code># This is a top heading.</code>. The "level" of a heading is basically just how small it is. The other is by underlining your heading with <code>=</code> or <code>-</code>, where <code>=</code> is the larger one.</p>
+		<details>
+			<summary>Visual Example</summary>
+			<table>
+				<thead>
+					<tr>
+						<th>Markdown</th>
+						<th>Result</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><code># Test</code></td>
+						<td><h1>Test</h1></td>
+					</tr>
+					<tr>
+						<td><pre><code>Test
+====</code></pre></td>
+						<td><h1>Test</h1></td>
+					</tr>
+					<tr>
+						<td><code>## Test</code></td>
+						<td><h2>Test</h2></td>
+					</tr>
+					<tr>
+						<td><pre><code>Test
+----</code></pre></td>
+						<td><h2>Test</h2></td>
+					</tr>
+					<tr>
+						<td><code>### Test</code></td>
+						<td><h3>Test</h3></td>
+					</tr>
+					<tr>
+						<td><code>#### Test</code></td>
+						<td><h4>Test</h4></td>
+					</tr>
+					<tr>
+						<td><code>##### Test</code></td>
+						<td><h5>Test</h5></td>
+					</tr>
+					<tr>
+						<td><code>###### Test</code></td>
+						<td><h6>Test</h6></td>
+					</tr>
+				</tbody>
+			</table>
+		</details>
+		<details>
+			<summary>Quick Tip</summary>
+			<small>Headings are also given IDs based on their content so that you can refer to them using links. For example, the heading <code>### This is a heading.</code> could be linked to using the link <code>[Link to the heading.](#thisisaheading)</code>.</small>
+		</details>
+		<h4 id="blockquotes">Block Quotes</h4>
+		<p>A block quote is a quote set aside from the main article in its own rectangle, and you can create them by adding a <code>&gt;</code> before each line of the quote. Block quotes can also have other block quotes inside of them, as well as lists and other elements.</p>
+		<details>
+			<summary>Visual Example</summary>
+			<table>
+				<thead>
+					<tr>
+						<th>Markdown</th>
+						<th>Result</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><pre><code>&gt; Reddit good
+&gt; Instagram bad</code></pre></td>
+						<td><pre><blockquote>Reddit good
+Instagram bad</blockquote></pre></td>
+					</tr>
+				</tbody>
+			</table>
+		</details>
+		<h4 id="blockquotes">Code Blocks</h4>
+		<p>A code block is kind of like a block quote except that instead of a quote it's computer code and it cannot contain other elements or styles. You can write a piece of code inside of a line by <code>`doing this`</code>, or you can do what is shown in the visual example.</p>
+		<details>
+			<summary>Visual Example</summary>
+			<table>
+				<thead>
+					<tr>
+						<th>Markdown</th>
+						<th>Result</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><code>`doing this`</code></td>
+						<td><code>doing this</code></td>
+					</tr>
+					<tr>
+						<td><pre><code>    This is code.
+    It has multiple lines,
+    and appears **as is.**</code></pre></td>
+						<td><pre><code>This is code.
+It has multiple lines,
+and appears **as is.**</code></pre></td>
+					</tr>
+					<tr>
+						<td><pre><code>```
+I like to do my code blocks this way,
+so I use less characters.
+```</code></pre></td>
+						<td><pre><code>I like to do my code blocks this way,
+so I use less characters.</code></pre></td>
+					</tr>
+				</tbody>
+			</table>
+		</details>
+		<h4 id="lists">Lists</h4>
+		<p>A list is a list of things. There are multiple types of lists you can use in Markdown, which you can see below.</p>
+		<h5 id="unordered-lists">Unordered Lists</h5>
+		<p>An unordered list is a list that isn't numbered, which is why it's unordered. Each item on an unordered list is preceded by either <code>* </code>, <code>+ </code>, or <code>- </code>.</p>
+		<details>
+			<summary>Visual Example</summary>
+			<table>
+				<thead>
+					<tr>
+						<th>Markdown</th>
+						<th>Result</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><pre><code>- This is a list.
+- Lists are nice.</pre></code></td>
+						<td>
+							<ul>
+								<li>This is a list.</li>
+								<li>Lists are nice.</li>
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<td><pre><code>- This is one marker.
++ This is another marker.
+* ...and another!</pre></code></td>
+						<td>
+							<ul>
+								<li>This is one marker.</li>
+								<li>This is another marker.</li>
+								<li>...and another!</li>
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<td><pre><code>```
+I like to do my code blocks this way,
+so I use less characters.
+```</code></pre></td>
+						<td><pre><code>I like to do my code blocks this way,
+so I use less characters.</code></pre></td>
+					</tr>
+				</tbody>
+			</table>
+		</details>
+		<hr></hr>
+		<h3 id="styles">Styles</h3>
+		<h4 id="bold-and-italics">Bold and Italics</h3>
+		<p>Did you know italics are called that because they were invented in Italy? Sorry. Anyway, <b>bold</b> and <i>italics</i> are pretty simple to do in Markdown. To create <i>italic</i> text, you may surround your text with either <code>*asterisks*</code> or <code>_underscores_</code>. For <b>bold</b> text, simply do the same thing, but double the <code>**asterisks**</code> or <code>__underscores__</code>.</p>
+		<details>
+			<summary>Visual Example</summary>
+			<table>
+				<thead>
+					<tr>
+						<th>Markdown</th>
+						<th>Result</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><code>_Hello world!_</code></td>
+						<td><i>Hello world!</i></td>
+					</tr>
+					<tr>
+						<td><code>*Hello world!*</code></td>
+						<td><i>Hello world!</i></td>
+					</tr>
+					<tr>
+						<td><code>__Hello world!__</code></td>
+						<td><b>Hello world!</b></td>
+					</tr>
+					<tr>
+						<td><code>**Hello world!**</code></td>
+						<td><b>Hello world!</b></td>
+					</tr>
+				</tbody>
+			</table>
+		</details>
+		<h4 id="strikethrough">Strikethrough</h4>
+		<p>A strikethrough is when you don't like a piece of text so then you put a line through it and write something else in its place, but sometimes you want to add one intentionally. That's why Markdown has strikethrough, which you can apply using ~~double tildes~~ like so: <code>~~This text is scratched out.~~</code></p>
+		<details>
+			<summary>Visual Example</summary>
+			<table>
+				<thead>
+					<tr>
+						<th>Markdown</th>
+						<th>Result</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><code>~~Fortnite good~~ Oops.</code></td>
+						<td><strike>Fortnite good</strike> Oops.</td>
+					</tr>
+				</tbody>
+			</table>
+		</details>
+	</body>
+</html>

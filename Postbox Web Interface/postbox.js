@@ -5,6 +5,7 @@
 /* # Translation Strings */
 translate.register({
 	"error.cooldown": "You need to wait %s to do that.",
+	"error.nope": "Nope.",
 	"error.post.nullsInTitle": "Your post's title contains null characters. Null characters are used to separate post components, so please remove them.",
 	"error.post.titleTooLong": "Your title is %s characters long, but should be at most %s.",
 	"error.post.titleTooShort": "Your title is %s characters long, but should be at least %s.",
@@ -23,13 +24,15 @@ translate.register({
 
 {
 	/* # Configurations */
+	let gaeFurry = false; // Unless you're authorized to do this.
+
 	let postBodyMin = 40; // Smallest number of characters posts can have.
 	let postBodyMax = 960; // Largest number of characters posts can have.
 	let postCooldown = 900; // The wait period for posting in seconds.
 	let postExistence = 86400; // Base post existence in seconds.
 	let postIDLength = 5; // The number of characters to use in a post ID.
 	let postTitleMin = 9; // Smallest number of characters titles can have.
-	let postTitleMax = 50; // Largest number of characters titles can have.
+	let postTitleMax = 60; // Largest number of characters titles can have.
 
 	let voteCooldown = 300; // The wait period for voting in seconds.
 	let voteInfluence = 150; // Number of seconds added per vote.
@@ -43,6 +46,8 @@ translate.register({
 	let converter = new showdown.Converter();
 	converter.setOption("emoji", true);
 	let ls = localStorage;
+
+	let events = {};
 
 	/* # Helper Functions */
 	function digits(num, count = 2) {
@@ -78,7 +83,57 @@ translate.register({
 		return Math.ceil(t / 7) + plural(" week", Math.ceil(t / 7));
 	}
 
+	/* # Admin Methods */
+	function H4X0R_L33T() {
+		throw translate("error.nope");
+	}
+
+	function adminHardReset() {
+		// Completely clear everything.
+		ls.clear();
+		return !ls.length; // Returns whether everything was cleared.
+	}
+
+	function adminResetCooldowns() {
+		// Reset the cooldowns.
+		ls.removeItem("DATA-pt");
+		ls.removeItem("DATA-vt");
+		return true; // Wasn't sure what to put here.
+	}
+
 	/* # Methods */
+	function eventsAddListener(e, f) {
+		if (typeof f === "function")
+			(events[e] = events[e] || []).push(f);
+		return null;
+	}
+
+	function eventsDispatch(e, d) {
+		if (events[e])
+			for (var i = 0; i < events[e].length; i++)
+				try {
+					eventsDispatchF(events[e][i], d);
+				} catch(error) {
+				}
+		return null;
+	}
+
+	async function eventsDispatchF(f, d) {
+		await f(d);
+		return null;
+	}
+
+	function eventsRemoveListener(e, f) {
+		if (typeof e === "string")
+			if (typeof f === "function") {
+				if (events[e])
+					while (events[e].includes(f))
+						events[e].splice(events[e].indexOf(f), 1);
+			} else
+				delete events[e];
+		return null;
+	}
+
 	function methodAllPostIDs() {
 		// What are all of the existing post IDs?
 		var ids = [];
@@ -118,9 +173,9 @@ translate.register({
 	function methodPost(bodyText, titleText = "") {
 		var content = String(bodyText), title = String(titleText), id = methodGeneratePostID(), cooldown = methodPostCooldown();
 		if (content.length < postBodyMin)
-			throw translate("error.post.tooShort", content.length, postTitleMin);
+			throw translate("error.post.tooShort", content.length, postBodyMin);
 		if (content.length > postBodyMax)
-			throw translate("error.post.tooLong", content.length, postTitleMax);
+			throw translate("error.post.tooLong", content.length, postBodyMax);
 		if (title.length < postTitleMin)
 			throw translate("error.post.titleTooShort", title.length, postTitleMin);
 		if (title.length > postTitleMax)
@@ -208,14 +263,48 @@ translate.register({
 	};
 	pb.allPostIDs = methodAllPostIDs;
 	pb.bodySize = methodBodySize;
+	pb.detach = eventsRemoveListener;
+	pb.dispatch = eventsDispatch;
 	pb.downvote = methodDownvote;
 	pb.generatePostID = methodGeneratePostID;
+	pb.on = eventsAddListener;
 	pb.post = methodPost;
 	pb.removeExpiredPosts = methodRemoveExpiredPosts;
 	pb.read = methodRead;
 	pb.titleSize = methodTitleSize;
 	pb.upvote = methodUpvote;
 	pb.voteCooldown = methodVoteCooldown;
+
+	let admin = pb.admin = {
+		"hardReset": adminHardReset,
+		"resetCooldowns": adminResetCooldowns
+	};
+
+	if (!gaeFurry) {
+		for (var i in admin)
+			switch (typeof admin[i]) {
+				case "boolean":
+				admin[i] = Boolean(Math.round(Math.random()));
+				break;
+				case "function":
+				admin[i] = H4X0R_L33T;
+				break;
+				case "number":
+				admin[i] = NaN;
+				break;
+				case "string":
+				admin[i] = "";
+				break;
+				case "symbol":
+				case "object":
+				admin[i] = null;
+				break;
+			}
+	}
+	admin.amIIn = function ifYouCallThisFunctionYouWatchCNN() {
+		// But not if you're authorized to do so.
+		return !!amIIn;
+	};
 
 	/* # Finalization */
 	if (reverseSandboxStorage)

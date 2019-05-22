@@ -81,12 +81,6 @@ GUIDE TO BULLET POINTS (will always be in this order)
   @ Sorry if this version's patch notes have the sections in the wrong order,
     I'm supposed to be sleeping.
 
-  + Postbox's Showdown configuration now has emojis enabled.
-
-  + There are now announcements in the changelog.
-
-  + The manual now links to Showdown's syntax guide.
-
   - Removed Herobrine.
 
   - Removed postbox-old.js. That was supposed to get deleted before release.
@@ -95,6 +89,12 @@ GUIDE TO BULLET POINTS (will always be in this order)
 
   - Removed the old duplicate changelog.txt from Postbox Web Interface.
     Not sure how it got there.
+
+  + Postbox's Showdown configuration now has emojis enabled.
+
+  + There are now announcements in the changelog.
+
+  + The manual now links to Showdown's syntax guide.
 
   * "Internal change" is now called "logical change."
 
@@ -120,5 +120,36 @@ GUIDE TO BULLET POINTS (will always be in this order)
   + Began adding admin functionality. Currently the only admin methods available
     are postbox.admin.hardReset() and postbox.admin.resetCooldowns(). If admin
     mode is disabled and you try to use these, an error will be thrown.
+
+--    Alpha 0.5    --
+
+  @ I am now going to strictly follow semantic versioning.
+
+  + Postbox now has an event system, but it doesn't really do much yet.
+
+  + The manual can now have tables in it.
+
+  + The manual now contains a proper Markdown guide. It's very incomplete, but
+    will be expanded upon in Alpha 0.5.1.
+
+  + The manual now has its own selection style!
+
+  * The default title character limit is now 60 characters instead of 50.
+
+  i Fixed the <code> style in the manual.
+
+  i Fixed the order of the bullet points in Alpha 0.3.1's changelog.
+
+  ~ Removed the trailing blank line from some of the files.
+
+  ? Planning to add a technical section to the manual.
+
+  ? Planning to add events (programming events, not social events) to Postbox.
+
+  ? Probably going to change the post title and content to use ASCII, since you
+    can use GitHub emojis on Postbox now.
+
+  ! I am aware that Markdown allows you to use any URL for a link including
+    JavaScript execution and that this is a security issue.
 
 --                 --
