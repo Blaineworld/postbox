@@ -1,9 +1,11 @@
+
 GUIDE TO BULLET POINTS (will always be in this order)
+  @ announcement
   - removed something
   + added something
   * changed something
   i bug fix
-  ~ internal change
+  ~ logical change
   ? w.i.p feature
   ! known bug
 
@@ -71,5 +73,38 @@ GUIDE TO BULLET POINTS (will always be in this order)
   ~ Most numbers are now stored as base-36 because I'm terrible.
 
   ~ The translation engine is now a separate script that the Postbox engine depends on.
+
+--   Alpha 0.3.1   --
+
+  @ Did you know there are configuration settings inside postbox.js?
+
+  @ Sorry if this version's patch notes have the sections in the wrong order,
+    I'm supposed to be sleeping.
+
+  + Postbox's Showdown configuration now has emojis enabled.
+
+  + There are now announcements in the changelog.
+
+  + The manual now links to Showdown's syntax guide.
+
+  - Removed Herobrine.
+
+  - Removed postbox-old.js. That was supposed to get deleted before release.
+
+  - Removed showdown.min.js.map.webloc. Not sure what that was.
+
+  - Removed the old duplicate changelog.txt from Postbox Web Interface.
+    Not sure how it got there.
+
+  * "Internal change" is now called "logical change."
+
+  ~ If an error occurs when loading a post, the post is just skipped instead
+    of failing to display the other posts. This behavior also applies to all
+    Postbox methods that use the postbox.read method for multiple posts, which
+    is currently just postbox.removeExpiredPosts.
+
+  i The localStorage is now reversed-sandboxed by default.
+
+  ? Going to reintroduce admin-only methods.
 
 --                 --

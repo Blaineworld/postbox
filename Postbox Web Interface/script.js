@@ -34,9 +34,11 @@ function renderPosts() {
 	var p = [];
 
 	var ids = postbox.allPostIDs();
-	for (var i = 0; i < ids.length; i++) {
-		p.push(postbox.read(ids[i]));
-	}
+	for (var i = 0; i < ids.length; i++)
+		try {
+			p.push(postbox.read(ids[i]));
+		} catch(error) {
+		}
 
 	for (var i = 0; i < p.length; i++) {
 		render(p[i]);

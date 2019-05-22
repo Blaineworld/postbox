@@ -4,7 +4,7 @@
 
 /* # Translation Strings */
 translate.register({
-	"error.cooldown": "You need to wait %s longer.",
+	"error.cooldown": "You need to wait %s to do that.",
 	"error.post.nullsInTitle": "Your post's title contains null characters. Null characters are used to separate post components, so please remove them.",
 	"error.post.titleTooLong": "Your title is %s characters long, but should be at most %s.",
 	"error.post.titleTooShort": "Your title is %s characters long, but should be at least %s.",
@@ -34,13 +34,14 @@ translate.register({
 	let voteCooldown = 300; // The wait period for voting in seconds.
 	let voteInfluence = 150; // Number of seconds added per vote.
 
-	let reverseSandbox = false; // Hide storage from the outside world.
+	let reverseSandboxStorage = true; // Hide storage from the outside world.
 
 	/* # Constants */
 	const NULL = String.fromCharCode(0);
 
 	/* # Declarations */
 	let converter = new showdown.Converter();
+	converter.setOption("emoji", true);
 	let ls = localStorage;
 
 	/* # Helper Functions */
@@ -166,12 +167,14 @@ translate.register({
 		// Remove all expired posts, and return the number removed.
 		var removed = 0, end = 0, object, i = 0, k;
 		for (; i < ls.length; i++)
-			if ((k = ls.key(i)).substring(0, 5) === "POST-") {
-				object = methodRead(k.replace("POST-", ""));
-				end = Number(object.date) + postExistence * 1000 + object.points * voteInfluence;
-				if (end < Date.now())
-					ls.removeItem(k);
-			}
+			if ((k = ls.key(i)).substring(0, 5) === "POST-")
+				try {
+					object = methodRead(k.replace("POST-", ""));
+					end = Number(object.date) + postExistence * 1000 + object.points * voteInfluence;
+					if (end < Date.now())
+						ls.removeItem(k);
+				} catch(error) {
+				}
 		return removed;
 	}
 
@@ -215,6 +218,6 @@ translate.register({
 	pb.voteCooldown = methodVoteCooldown;
 
 	/* # Finalization */
-	if (reverseSandbox)
+	if (reverseSandboxStorage)
 		delete window.localStorage;
 }
