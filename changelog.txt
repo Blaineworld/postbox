@@ -112,4 +112,13 @@ GUIDE TO BULLET POINTS (will always be in this order)
   ~ Apparently the error message when your post content was outside the valid
     character range used the title character range.
 
+--    Alpha 0.4    --
+
+  @ If you enable admin mode and aren't authorized you're a furry and you indent
+    your code with spaces instead of tabs.
+
+  + Began adding admin functionality. Currently the only admin methods available
+    are postbox.admin.hardReset() and postbox.admin.resetCooldowns(). If admin
+    mode is disabled and you try to use these, an error will be thrown.
+
 --                 --

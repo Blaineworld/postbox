@@ -5,6 +5,7 @@
 /* # Translation Strings */
 translate.register({
 	"error.cooldown": "You need to wait %s to do that.",
+	"error.nope": "Nope.",
 	"error.post.nullsInTitle": "Your post's title contains null characters. Null characters are used to separate post components, so please remove them.",
 	"error.post.titleTooLong": "Your title is %s characters long, but should be at most %s.",
 	"error.post.titleTooShort": "Your title is %s characters long, but should be at least %s.",
@@ -23,6 +24,8 @@ translate.register({
 
 {
 	/* # Configurations */
+	let gaeFurry = false; // Unless you're authorized to do this.
+
 	let postBodyMin = 40; // Smallest number of characters posts can have.
 	let postBodyMax = 960; // Largest number of characters posts can have.
 	let postCooldown = 900; // The wait period for posting in seconds.
@@ -76,6 +79,24 @@ translate.register({
 		if ((t = Math.ceil(t / 24)) < 7)
 			return t + plural(" day", t);
 		return Math.ceil(t / 7) + plural(" week", Math.ceil(t / 7));
+	}
+
+	/* # Admin Methods */
+	function H4X0R_L33T() {
+		throw translate("error.nope");
+	}
+
+	function adminHardReset() {
+		// Completely clear everything.
+		ls.clear();
+		return !ls.length; // Returns whether everything was cleared.
+	}
+
+	function adminResetCooldowns() {
+		// Reset the cooldowns.
+		ls.removeItem("DATA-pt");
+		ls.removeItem("DATA-vt");
+		return true; // Wasn't sure what to put here.
 	}
 
 	/* # Methods */
@@ -216,6 +237,37 @@ translate.register({
 	pb.titleSize = methodTitleSize;
 	pb.upvote = methodUpvote;
 	pb.voteCooldown = methodVoteCooldown;
+
+	let admin = pb.admin = {
+		"hardReset": adminHardReset,
+		"resetCooldowns": adminResetCooldowns
+	};
+
+	if (!gaeFurry) {
+		for (var i in admin)
+			switch (typeof admin[i]) {
+				case "boolean":
+				admin[i] = Boolean(Math.round(Math.random()));
+				break;
+				case "function":
+				admin[i] = H4X0R_L33T;
+				break;
+				case "number":
+				admin[i] = NaN;
+				break;
+				case "string":
+				admin[i] = "";
+				break;
+				case "symbol":
+				case "object":
+				admin[i] = null;
+				break;
+			}
+	}
+	admin.amIIn = function ifYouCallThisFunctionYouWatchCNN() {
+		// But not if you're authorized to do so.
+		return !!amIIn;
+	};
 
 	/* # Finalization */
 	if (reverseSandboxStorage)
