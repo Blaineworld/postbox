@@ -32,7 +32,7 @@ translate.register({
 	let postExistence = 86400; // Base post existence in seconds.
 	let postIDLength = 5; // The number of characters to use in a post ID.
 	let postTitleMin = 9; // Smallest number of characters titles can have.
-	let postTitleMax = 60; // Largest number of characters titles can have.
+	let postTitleMax = 50; // Largest number of characters titles can have.
 
 	let voteCooldown = 300; // The wait period for voting in seconds.
 	let voteInfluence = 150; // Number of seconds added per vote.
@@ -45,9 +45,10 @@ translate.register({
 	/* # Declarations */
 	let converter = new showdown.Converter();
 	converter.setOption("emoji", true);
+	converter.setOption("parseImageDimension", true);
+	converter.setOption("tables", true);
+	converter.setOption("backslashEscapesHTMLTags", true);
 	let ls = localStorage;
-
-	let events = {};
 
 	/* # Helper Functions */
 	function digits(num, count = 2) {
@@ -102,38 +103,6 @@ translate.register({
 	}
 
 	/* # Methods */
-	function eventsAddListener(e, f) {
-		if (typeof f === "function")
-			(events[e] = events[e] || []).push(f);
-		return null;
-	}
-
-	function eventsDispatch(e, d) {
-		if (events[e])
-			for (var i = 0; i < events[e].length; i++)
-				try {
-					eventsDispatchF(events[e][i], d);
-				} catch(error) {
-				}
-		return null;
-	}
-
-	async function eventsDispatchF(f, d) {
-		await f(d);
-		return null;
-	}
-
-	function eventsRemoveListener(e, f) {
-		if (typeof e === "string")
-			if (typeof f === "function") {
-				if (events[e])
-					while (events[e].includes(f))
-						events[e].splice(events[e].indexOf(f), 1);
-			} else
-				delete events[e];
-		return null;
-	}
-
 	function methodAllPostIDs() {
 		// What are all of the existing post IDs?
 		var ids = [];
@@ -213,7 +182,7 @@ translate.register({
 		if (!object.title)
 			delete object.title;
 		object.markdown = raw.substring(currentNull + 1, raw.length);
-		object.html = converter.makeHtml(object.markdown);
+		object.html = converter.makeHtml(object.markdown.replace(/</g, "&lt;").replace(/>/g, "&gt;"));
 		object.removalTime = Number(object.date) + postExistence * 1000 + object.points * voteInfluence;
 		return object;
 	}
@@ -263,11 +232,8 @@ translate.register({
 	};
 	pb.allPostIDs = methodAllPostIDs;
 	pb.bodySize = methodBodySize;
-	pb.detach = eventsRemoveListener;
-	pb.dispatch = eventsDispatch;
 	pb.downvote = methodDownvote;
 	pb.generatePostID = methodGeneratePostID;
-	pb.on = eventsAddListener;
 	pb.post = methodPost;
 	pb.removeExpiredPosts = methodRemoveExpiredPosts;
 	pb.read = methodRead;

@@ -107,3 +107,37 @@
 .post li:active {
 	cursor: text;
 }
+
+.post table {
+	border-collapse: collapse;
+	box-shadow: 0 0.2ch 0.25ch -0.2ch black;
+	transition: 1s box-shadow;
+}
+
+.post table:hover {
+	box-shadow: 0 0.25ch 0.3ch -0.25ch black;
+}
+
+.post table:active {
+	box-shadow: 0 0 2.5ch -5ch black;
+}
+
+.post tbody {
+	background: #e0e0e0;
+}
+
+.post td, .post th {
+	border: 1px solid black;
+	color: black;
+	line-height: 0.875;
+	padding: 0.25ch 0.5ch;
+}
+
+.post th {
+	background: cornFlowerBlue;
+	color: white;
+	cursor: default;
+}
+
+.post th::selection {
+}

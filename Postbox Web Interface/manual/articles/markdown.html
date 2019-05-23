@@ -13,6 +13,7 @@
 		</div>
 		<hr></hr>
 		<small>Markdown is a markup language initially created by John Gruber and used on many sites. Of course, you don't really care and just want to see the tutorial, so here it is...</small>
+		<small>Please note that although Markdown normally supports HTML tags, Postbox Markdown does not allow you to use HTML tags for security reasons. Someone could add a &lt;script&gt; tag!</small>
 		<h3 id="escape-sequences">Escape Sequences</h3>
 		<p>In programming, an escape sequence is a sequence of characters that changes the meaning of a character to something else. A typical example of this is a string in "quotation marks" where you want to have a quotation mark in the string, so you use <code>\"</code> to tell the computer that the quotation mark is just a quotation mark and isn't the end of the string. The same thing applies in Markdown, too. You can use a <code title="backslash">\</code> to say that a character is just a character and doesn't mean anything else. For example, you might need a # in a heading, so instead of <code># # My Heading</code>, which results in a level two heading saying <i>My Heading</i>, you use <code># \# My Heading</code> so that the # is treated as just part of the text. These can be used on pretty much anything that uses a character to represent a style.</p>
 		<hr></hr>
@@ -191,13 +192,153 @@ so I use less characters.</code></pre></td>
 							</ul>
 						</td>
 					</tr>
+				</tbody>
+			</table>
+		</details>
+		<h5 id="ordered-lists">Ordered Lists</h5>
+		<p>An ordered list is a list that is numbered, which is why it's ordered. Each item on an ordered list is preceded by <code><i>n</i>. </code>, where <i>n</i> is any number. You don't necessarily need to number the items correctly, as it will have no effect on the output.</p>
+		<details>
+			<summary>Visual Example</summary>
+			<table>
+				<thead>
 					<tr>
-						<td><pre><code>```
-I like to do my code blocks this way,
-so I use less characters.
-```</code></pre></td>
-						<td><pre><code>I like to do my code blocks this way,
-so I use less characters.</code></pre></td>
+						<th>Markdown</th>
+						<th>Result</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><pre><code>**Things I Hate**
+1. Markdown
+2. lists
+3. repetition
+4. lists
+5. irony
+6. normies</pre></code></td>
+						<td>
+							<b>Things I Hate</b>
+							<ol>
+								<li>Markdown</li>
+								<li>lists</li>
+								<li>repetition</li>
+								<li>lists</li>
+								<li>irony</li>
+								<li>normies</li>
+							</ol>
+						</td>
+					</tr>
+					<tr>
+						<td><pre><code>8. item one
+0. item two
+0. item three
+8. item four
+5. item five</pre></code></td>
+						<td>
+							<ol>
+								<li>item one</li>
+								<li>item two</li>
+								<li>item three</li>
+								<li>item four</li>
+								<li>item five</li>
+							</ol>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</details>
+		<h4 id="links">Links</h4>
+		<p>There are multiple ways to create links in Markdown. I don't know how to explain it really, so just look at the visual examples.</p>
+		<details>
+			<summary>Visual Example</summary>
+			<table>
+				<thead>
+					<tr>
+						<th>Markdown</th>
+						<th>Result</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><code>Click [here](https://minecraft.net) if you are a chad.</code></td>
+						<td>Click <a href="https://minecraft.net">here</a> if you are a chad.</td>
+					</tr>
+					<tr>
+						<td><pre><code>Click [this][] if you are epic, or [this one][] if you are a normie.
+
+[this]: https://minecraft.net
+[this one]: https://www.epicgames.com/fortnite/home</code></pre></td>
+						<td>Click <a href="https://minecraft.net">this</a> if you are epic, or <a href="https://www.epicgames.com/fortnite/home">this</a> if you are a normie.</td>
+					</tr>
+					<tr>
+						<td><pre><code>[This][1] is a Google Search, and [this][2] is DuckDuckGo.
+
+[1]: https://google.com
+[2]: https://duckduckgo.com</code></pre></td>
+						<td><a href="https://google.com">This</a> is Google Search, and <a href="https://duckduckgo.com">this</a> is DuckDuckGo.</td>
+					</tr>
+				</tbody>
+			</table>
+		</details>
+		<h4 id="images">Images</h4>
+		<p>Images are basically just links but with an <code>!</code> preceding them, and you can also optionally specify the size of the image.</p>
+		<details>
+			<summary>Visual Example</summary>
+			<table>
+				<thead>
+					<tr>
+						<th>Markdown</th>
+						<th>Result</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><code>![GitHub Logo](https://github.com/favicon.ico) If you see the words "GitHub Logo", the image failed to load.</code></td>
+						<td><img alt="GitHub Logo" src="https://github.com/favicon.ico"></img> If you see the words "GitHub Logo", the image failed to load.</td>
+					</tr>
+					<tr>
+						<td><code>![T H I C C  GitHub Logo](https://github.com/favicon.ico =64x32) That's one thicc logo!</code></td>
+						<td><img alt="T H I C C  GitHub Logo" src="https://github.com/favicon.ico" width="64" height="32"></img> That's one thicc logo!</td>
+					</tr>
+				</tbody>
+			</table>
+		</details>
+		<h4 id="tables">Tables</h4>
+		<p>I don't know how to explain tables, just look at the visual examples.</p>
+		<details>
+			<summary>Visual Example</summary>
+			<table>
+				<thead>
+					<tr>
+						<th>Markdown</th>
+						<th>Result</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><pre><code>|     Question     | Answer |
+| ---------------- | ------ |
+| Is this a table? |  yes   |
+| Is it Markdown?  | partly |</code></pre></td>
+						<td>
+							<table>
+								<thead>
+									<tr>
+										<th>Question</th>
+										<th>Answer</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Is this a table?</td>
+										<td>yes</td>
+									</tr>
+									<tr>
+										<td>Is it Markdown?</td>
+										<td>partly</td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
 					</tr>
 				</tbody>
 			</table>

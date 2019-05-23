@@ -1,3 +1,7 @@
+* {
+	image-rendering: pixelated;
+}
+
 body {
 	background: #181c20;
 	color: #c8c4c0;

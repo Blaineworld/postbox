@@ -1,3 +1,12 @@
+* {
+	image-rendering: pixelated;
+}
+
+::selection {
+	background-color: #00400080;
+	color: white;
+}
+
 a {
 	cursor: default;
 }
@@ -13,12 +22,7 @@ body {
 
 body:not(.nobackground) {
 	background: #d8dce0;
-	background: radial-gradient(circle at bottom right, rosyBrown 59.9%, transparent 60.1%), radial-gradient(circle at left, cornFlowerBlue 74.9%, transparent 75.1%), #d8dce0;
-}
-
-::selection {
-	background-color: #00400080;
-	color: white;
+	background: radial-gradient(circle at 20% 100%, lightGreen 2.5%, transparent 2.5%), radial-gradient(circle at 95% 95%, cornFlowerBlue 12.5%, transparent 12.5%), #d8dce0;
 }
 
 code {
@@ -26,7 +30,8 @@ code {
 	border-radius: 0.5ch;
 	color: lime;
 	display: inline-block;
-	padding: -0.05ch 0.25ch;
+	padding: 0.5ch 0.25ch 0.125ch;
+	white-space: pre-wrap;
 }
 
 details {

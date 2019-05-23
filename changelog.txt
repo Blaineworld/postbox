@@ -152,4 +152,17 @@ GUIDE TO BULLET POINTS (will always be in this order)
   ! I am aware that Markdown allows you to use any URL for a link including
     JavaScript execution and that this is a security issue.
 
+--    Alpha 0.6    --
+
+  - HTML tags can no longer be used in posts, although you can still use character
+    entities. I do plan to switch to ASCII after all.
+
+  + Added more to the Markdown guide.
+
+  + You can now define image dimensions.
+
+  + You can now use tables in your posts.
+
+  * Changed the manual background to be less GPU intensive.
+
 --                 --
