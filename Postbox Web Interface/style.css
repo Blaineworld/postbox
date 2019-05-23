@@ -115,16 +115,7 @@ input::selection, textarea::selection {
 }
 
 .emoji {
-	line-height: 125%;
-	text-shadow: 0 0 0.05ch black;
-}
-
-.emoji:hover {
-	text-shadow: 0 0 0.1ch black;
-}
-
-.emoji:active {
-	text-shadow: 0 0 0.05ch white;
+	height: 2ch;
 }
 
 .points::selection {
