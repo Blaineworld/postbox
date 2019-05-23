@@ -9,7 +9,8 @@
 		<div id="bar">
 			<a href="#escape-sequences">Escape Sequences</a> /
 			<a href="#typographical-features">Typographical Structures</a> /
-			<a href="#styles">Styles</a>
+			<a href="#styles">Styles</a> /
+			<a href="#emojis">Emojis</a>
 		</div>
 		<hr></hr>
 		<small>Markdown is a markup language initially created by John Gruber and used on many sites. Of course, you don't really care and just want to see the tutorial, so here it is...</small>
@@ -395,5 +396,106 @@ so I use less characters.</code></pre></td>
 				</tbody>
 			</table>
 		</details>
+		<h3 id="emojis">Emojis</h3>
+		<p>Postbox allows you to use GitHub's emoji's. The syntax for emojis is <code>:<i>e</i>:</code>, where <i>e</i> is the name of the emoji. The names of all the supported GitHub emojis as well as all their visible forms can be seen in the table below.</p>
+		<details>
+			<summary>Table of Emojis</summary>
+			<table>
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Emoji</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody id="emoji-table"></tbody>
+			</table>
+		</details>
+		<script language="Javascript">
+var emojiMap = {
+	"showdown": "The logo of Showdown, the Markdown engine used in Postbox.",
+	"+1": "A thumbs-up or \"like\" symbol.",
+	"-1": "A thumbs-down or \"dislike\" symbol.",
+	"100": "It's the <color style=\"color:red\">100</color> emoji.",
+	"1234": "The numbers 1-4.",
+	"1st_place_medal": "A shiny golden pancake.",
+	"2nd_place_medal": "A shiny silver pancake.",
+	"3rd_place_medal": "A shiny bronze pancake.",
+	"8ball": "An eight ball.",
+	"a": "The A blood type. Because blood is <b>red</b>!",
+	"ab": "The AB blood type.",
+	"abc": "The letters A-C in lower case.",
+	"abcd": "The letters A-D in lower case.",
+	"accept": "Take a wild guess.",
+	"aerial_tramway": "The least used emoji of all time.",
+	"afghanistan": "Guess.",
+	"airplane": "It's an airplane...",
+	"aland_islands": "Never heard of it until I saw this emoji. Sorry.",
+	"alarm_clock": "<big>RRRRIIINNNGG!!!</big>",
+	"albania": "Megalovania.",
+	"alembic": "Excuse me, what?",
+	"algeria": "Why are there so many countries beginning with A?",
+	"alien": "I believe the word you're looking for is \"space ranger.\"",
+	"american_samoa": "Why?!",
+	"amphora": "Maybe it has rupees inside.",
+	"anchor": "It's a very heavy boi.",
+	"andorra": "Another one?",
+	"angel": "It's an illustration of an angel.",
+	"anger": "Anime VFX #1",
+	"angola": "Still more?",
+	"angry": "TRIGGERED.",
+	"anguilla": "More countries?!",
+	"anguished": "When you fall in lava with all of your eyes of ender.",
+	"ant": "Smol boi.",
+	"antarctica": "Truly the most complete nation",
+	"antigua_barbuda": "All these flags are a bit overkill",
+	"apple": "YoU'Re jUSt UsINg iT WRoNg.",
+	"aquarius": "I guess if you like squiggly lines...?",
+	"argentina": "Another country...",
+	"aries": "When the pee comes out in two different streams.",
+	"armenia": "More countries! Yay...",
+	"arrow_double_down": "It's like some sort of alternate dimension fast forward button.",
+	"arrow_double_up": "Alternate dimension rewind button.",
+	"arrow_down": "Down, down, down into the burnin' ring of fire...",
+	"arrow_down_small": "Clearly these weren't named with consistency in mind.",
+	"arrow_forward": "Move along, move along.",
+	"arrow_heading_down": "Turn upn't.",
+	"arrow_heading_up": "Turn down't.",
+	"arrow_left": "Sliiide to the left!",
+	"arrow_right": "Sliiide to the right!",
+	"arrow_backward": "Take it back now y'all!",
+	"arrow_lower_left": "It's an arrow...",
+	"arrow_lower_right": "The opposite of arrow_lower_left.",
+	"arrow_right_hook": "In other words heading right.",
+	"arrow_up": "The movie you can't watch without crying.",
+	"arrow_up_small": "Jump up,",
+	"arrow_upper_left": "kick back,",
+	"arrow_up_down": "whip around",
+	"arrow_clockwise": "and",
+	"arrow_counterclockwise": "spin!",
+	"arrow_upper_right": "And then we'll do it again...",
+	"art": "This is just a paint palette though...",
+	"articulated_lorry": "I thought this was a garbage truck.",
+	"artificial_satellite": "I'm going to steal the moon!",
+	"aruba": "Hey, look, a flag!",
+	"asterisk": "*",
+	"astonished": "Woah! What's that?! <code>:ok_hand:</code>",
+	"athletic_shoe": "Movie Sonic bad.",
+	"atm": "I'm gonna pay money to access my own money!",
+	"atom": "Look! A text editor!",
+	"atom_symbol": "Look! A SciShow!",
+	"australia": "Will soon be aliased as <code>:upside_down:</code>.",
+	"austria": "No kangaroos here!",
+	"avacado": "Doesn't belong on toast",
+	"azerbaijan": "I knew I had to take a break when I tried to spell this one.",
+	"b": "The B blood type, but also used in ancient deep fried memes."
+};
+
+var i, html = "";
+for (i in emojiMap)
+	html += "<tr><td><code>:" + i + ":</code></td><td><img src=\"../../emoji/" + i + ".png\" width=\"20\" height=\"20\"></img></td><td>" + emojiMap[i] + "</td></tr>";
+
+document.querySelector("#emoji-table").innerHTML = html;
+		</script>
 	</body>
 </html>

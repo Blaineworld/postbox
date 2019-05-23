@@ -154,8 +154,8 @@ GUIDE TO BULLET POINTS (will always be in this order)
 
 --    Alpha 0.6    --
 
-  - HTML tags can no longer be used in posts, although you can still use character
-    entities. I do plan to switch to ASCII after all.
+  - HTML tags can no longer be used in posts, although you can still use
+    character entities. I do plan to switch to ASCII after all.
 
   + Added more to the Markdown guide.
 
@@ -164,5 +164,15 @@ GUIDE TO BULLET POINTS (will always be in this order)
   + You can now use tables in your posts.
 
   * Changed the manual background to be less GPU intensive.
+
+--   Alpha 0.6.1   --
+
+  + There is now a section in the markdown guide about emojis. It currently
+    only includes emojis beginning the letter A and the B emoji, but will be
+    expanded over time as I release more versions. At least 15 more emojis in
+    the table per release until they're all included.
+
+  ? Going to modify showdown.js so that it will display images from the /emoji
+    folder instead of actual emojis, then it will look nice on all fonts. :smile:
 
 --                 --
