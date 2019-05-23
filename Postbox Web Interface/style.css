@@ -115,7 +115,7 @@ input::selection, textarea::selection {
 }
 
 .emoji {
-	height: 2ch;
+	height: 16px;
 }
 
 .points::selection {

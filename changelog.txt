@@ -175,4 +175,40 @@ GUIDE TO BULLET POINTS (will always be in this order)
   ? Going to modify showdown.js so that it will display images from the /emoji
     folder instead of actual emojis, then it will look nice on all fonts. :smile:
 
+--    Alpha 0.7    --
+
+  + I added Minecraft emojis because Fortnite bad.
+
+  * Using an emoji will now show an image from the /emoji directory, like I said
+    in Alpha 0.6.1. This is a big update, as it means I or anyone will be able to
+    add and remove emojis at will, but it's also a big responsibility because I
+    have to manually add all the emojis. (Oh no!) Emojis can be placed anywhere
+    within the emoji directory or any subdirectory and must be saved with the
+    file extension .png, not necessarily PNG format but who cares?
+
+--    Alpha 0.8    --
+
+  @ How do I make it stop copying my JS files into the root directory?
+
+  + Add a few face emojis. Not all of them, just a few.
+
+  + Added the Alpha 0.7 changelog because apparently it didn't upload last time.
+
+  * Emojis are now GIFs. Not only does this allow animated emojis, but it also
+    reduces their file size and allows for easier pixel art coloring. I haven't
+	converted all the existing emojis yet, but those will be available soon.
+
+  i Emoji hovernotes now include the :colons:.
+
+  i Emojis are no longer draggable.
+
+  i Emojis are now 16x16 pixels so the Minecraft ones look nice.
+
+  i Emojis no longer have alt text, and will now only display the broken image icon.
+
+  i The default emojis no longer ever have under_scores in their names, as
+    _underscores_ are used in Markdown to italicize text.
+
+  ! Don't ask why the emojis aren't transparent yet. It's MS Paint.
+
 --                 --
