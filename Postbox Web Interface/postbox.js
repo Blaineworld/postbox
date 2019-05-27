@@ -51,22 +51,22 @@ translate.register({
 	let ls = localStorage;
 
 	/* # Helper Functions */
-	function digits(num, count = 2) {
+	const digits = function(num, count = 2) {
 		return "'".repeat(String(num).length > count) + "0".repeat(Math.max(0, count - String(num).length)) + String(num).substring(String(num).length - count);
 	}
 
-	function plural(noun, count = 2) {
+	const plural = function(noun, count = 2) {
 		if (Math.abs(count) <= 1)
 			return String(noun);
 		return String(noun) + "s";
 	}
 
-	function formatDate(date) {
+	const formatDate = function(date) {
 		// Format an amount of time.
 		return digits(date.getDate()) + "/" + digits(date.getMonth() + 1) + "/" + digits(date.getFullYear()) + " @ " + digits(date.getHours()) + ":" + digits(date.getMinutes());
 	}
 
-	function formatTime(ms) {
+	const formatTime = function(ms) {
 		// Format an amount of time.
 		var t = Number(ms);
 		if (t !== t)
@@ -85,17 +85,17 @@ translate.register({
 	}
 
 	/* # Admin Methods */
-	function H4X0R_L33T() {
+	const H4X0R_L33T = function() {
 		throw translate("error.nope");
 	}
 
-	function adminHardReset() {
+	const adminHardReset = function() {
 		// Completely clear everything.
 		ls.clear();
 		return !ls.length; // Returns whether everything was cleared.
 	}
 
-	function adminResetCooldowns() {
+	const adminResetCooldowns = function() {
 		// Reset the cooldowns.
 		ls.removeItem("DATA-pt");
 		ls.removeItem("DATA-vt");
@@ -103,7 +103,7 @@ translate.register({
 	}
 
 	/* # Methods */
-	function methodAllPostIDs() {
+	const methodAllPostIDs = function() {
 		// What are all of the existing post IDs?
 		var ids = [];
 		for (var i = 0, k; i < ls.length; i++)
@@ -112,7 +112,7 @@ translate.register({
 		return ids;
 	}
 
-	function methodBodySize() {
+	const methodBodySize = function() {
 		// How long can and should my post be?
 		return {
 			"min": postBodyMin,
@@ -120,7 +120,7 @@ translate.register({
 		};
 	}
 
-	function methodDownvote(id) {
+	const methodDownvote = function(id) {
 		// Decrease a post's score by one point.
 		var object = methodRead(id), cooldown = methodVoteCooldown();
 		if (cooldown)
@@ -130,7 +130,7 @@ translate.register({
 		return object.points;
 	}
 
-	function methodGeneratePostID() {
+	const methodGeneratePostID = function() {
 		// Generate a new unique post ID.
 		var id = "", i;
 		while (!id || ls.getItem("POST-" + id))
@@ -139,7 +139,7 @@ translate.register({
 		return id;
 	}
 
-	function methodPost(bodyText, titleText = "") {
+	const methodPost = function(bodyText, titleText = "") {
 		var content = String(bodyText), title = String(titleText), id = methodGeneratePostID(), cooldown = methodPostCooldown();
 		if (content.length < postBodyMin)
 			throw translate("error.post.tooShort", content.length, postBodyMin);
@@ -158,12 +158,12 @@ translate.register({
 		return id;
 	}
 
-	function methodPostCooldown() {
+	const methodPostCooldown = function() {
 		// How many seconds until I can post again?
 		return (Math.max(0, postCooldown * 1000 - (Date.now() - parseInt(ls.getItem("DATA-pt") || "0", 36))) || 0) / 1000;
 	}
 
-	function methodRead(id) {
+	const methodRead = function(id) {
 		// Read a specific post, or throw an error if something goes wrong.
 		var raw = ls.getItem("POST-" + id), object = {
 			"raw": raw,
@@ -187,7 +187,7 @@ translate.register({
 		return object;
 	}
 
-	function methodRemoveExpiredPosts() {
+	const methodRemoveExpiredPosts = function() {
 		// Remove all expired posts, and return the number removed.
 		var removed = 0, end = 0, object, i = 0, k;
 		for (; i < ls.length; i++)
@@ -202,7 +202,7 @@ translate.register({
 		return removed;
 	}
 
-	function methodTitleSize() {
+	const methodTitleSize = function() {
 		// How long can and should my title be?
 		return {
 			"min": postTitleMin,
@@ -210,7 +210,7 @@ translate.register({
 		};
 	}
 
-	function methodUpvote(id) {
+	const methodUpvote = function(id) {
 		// Increase a post's score by one point.
 		var object = methodRead(id), cooldown = methodVoteCooldown();
 		if (cooldown)
@@ -220,7 +220,7 @@ translate.register({
 		return object.points;
 	}
 
-	function methodVoteCooldown() {
+	const methodVoteCooldown = function() {
 		// How many seconds until I can vote again?
 		return (Math.max(0, voteCooldown * 1000 - (Date.now() - parseInt(ls.getItem("DATA-vt") || "0", 36))) || 0) / 1000;
 	}
