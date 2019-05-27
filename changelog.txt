@@ -9,6 +9,187 @@ GUIDE TO BULLET POINTS (will always be in this order)
   ? w.i.p feature
   ! known bug
 
+--    Alpha 0.9    --
+
+  - Removed all emojis for now, so that I can try to draw them well.
+
+  - Removed lots of unnecessary files that were supposed to be removed!
+
+  + The changelog now includes Alpha 0.1 just for the sake of completeness.
+
+  * The changelog now goes from the most recent version at the top to the
+    oldest documented version at the bottom.
+
+  i Patched a HUGE security hole. So apparently function declarations aren't
+    block scoped and are actually function scoped... Good to know.
+
+--    Alpha 0.8    --
+
+  @ How do I make it stop copying my JS files into the root directory?
+
+  + Add a few face emojis. Not all of them, just a few.
+
+  + Added the Alpha 0.7 changelog because apparently it didn't upload last time.
+
+  * Emojis are now GIFs. Not only does this allow animated emojis, but it also
+    reduces their file size and allows for easier pixel art coloring. I haven't
+	converted all the existing emojis yet, but those will be available soon.
+
+  i Emoji hovernotes now include the :colons:.
+
+  i Emojis are no longer draggable.
+
+  i Emojis are now 16x16 pixels so the Minecraft ones look nice.
+
+  i Emojis no longer have alt text, and will now only display the broken image icon.
+
+  i The default emojis no longer ever have under_scores in their names, as
+    _underscores_ are used in Markdown to italicize text.
+
+  ! Don't ask why the emojis aren't transparent yet. It's MS Paint.
+
+--    Alpha 0.7    --
+
+  + I added Minecraft emojis because Fortnite bad.
+
+  * Using an emoji will now show an image from the /emoji directory, like I said
+    in Alpha 0.6.1. This is a big update, as it means I or anyone will be able to
+    add and remove emojis at will, but it's also a big responsibility because I
+    have to manually add all the emojis. (Oh no!) Emojis can be placed anywhere
+    within the emoji directory or any subdirectory and must be saved with the
+    file extension .png, not necessarily PNG format but who cares?
+
+--   Alpha 0.6.1   --
+
+  + There is now a section in the markdown guide about emojis. It currently
+    only includes emojis beginning the letter A and the B emoji, but will be
+    expanded over time as I release more versions. At least 15 more emojis in
+    the table per release until they're all included.
+
+  ? Going to modify showdown.js so that it will display images from the /emoji
+    folder instead of actual emojis, then it will look nice on all fonts. :smile:
+
+--    Alpha 0.6    --
+
+  - HTML tags can no longer be used in posts, although you can still use
+    character entities. I do plan to switch to ASCII after all.
+
+  + Added more to the Markdown guide.
+
+  + You can now define image dimensions.
+
+  + You can now use tables in your posts.
+
+  * Changed the manual background to be less GPU intensive.
+
+--    Alpha 0.5    --
+
+  @ I am now going to strictly follow semantic versioning.
+
+  + Postbox now has an event system, but it doesn't really do much yet.
+
+  + The manual can now have tables in it.
+
+  + The manual now contains a proper Markdown guide. It's very incomplete, but
+    will be expanded upon in Alpha 0.5.1.
+
+  + The manual now has its own selection style!
+
+  * The default title character limit is now 60 characters instead of 50.
+
+  i Fixed the <code> style in the manual.
+
+  i Fixed the order of the bullet points in Alpha 0.3.1's changelog.
+
+  ~ Removed the trailing blank line from some of the files.
+
+  ? Planning to add a technical section to the manual.
+
+  ? Planning to add events (programming events, not social events) to Postbox.
+
+  ? Probably going to change the post title and content to use ASCII, since you
+    can use GitHub emojis on Postbox now.
+
+  ! I am aware that Markdown allows you to use any URL for a link including
+    JavaScript execution and that this is a security issue.
+
+--    Alpha 0.4    --
+
+  @ If you enable admin mode and aren't authorized you're a furry and you indent
+    your code with spaces instead of tabs.
+
+  + Began adding admin functionality. Currently the only admin methods available
+    are postbox.admin.hardReset() and postbox.admin.resetCooldowns(). If admin
+    mode is disabled and you try to use these, an error will be thrown.
+
+--   Alpha 0.3.2   --
+
+  ~ Apparently the error message when your post content was outside the valid
+    character range used the title character range.
+
+--   Alpha 0.3.1   --
+
+  @ Did you know there are configuration settings inside postbox.js?
+
+  @ Sorry if this version's patch notes have the sections in the wrong order,
+    I'm supposed to be sleeping.
+
+  - Removed Herobrine.
+
+  - Removed postbox-old.js. That was supposed to get deleted before release.
+
+  - Removed showdown.min.js.map.webloc. Not sure what that was.
+
+  - Removed the old duplicate changelog.txt from Postbox Web Interface.
+    Not sure how it got there.
+
+  + Postbox's Showdown configuration now has emojis enabled.
+
+  + There are now announcements in the changelog.
+
+  + The manual now links to Showdown's syntax guide.
+
+  * "Internal change" is now called "logical change."
+
+  ~ If an error occurs when loading a post, the post is just skipped instead
+    of failing to display the other posts. This behavior also applies to all
+    Postbox methods that use the postbox.read method for multiple posts, which
+    is currently just postbox.removeExpiredPosts.
+
+  i The localStorage is now reversed-sandboxed by default.
+
+  ? Going to reintroduce admin-only methods.
+
+--    Alpha 0.3    --
+
+  + Downvotes actually exist now!
+
+  + The manual now includes an incomplete section all about Markdown.
+
+  + The translation engine now supports multiple variables.
+
+  * It is now COMPLETELY impossible for posts to overwrite each other. In addition to
+    this, post IDs now consist of 5 characters instead of 4.
+
+  i Removed all the bad code. What did it cost? All of the code. Basically, I just
+    rewrote postbox.js because it was a buggy mess.
+
+  ~ Most numbers are now stored as base-36 because I'm terrible.
+
+  ~ The translation engine is now a separate script that the Postbox engine depends on.
+
+--   Alpha 0.2.1   --
+
+  + Added this to the change log.
+
+  + Established that the names of update commits will use lowercase for the word update.
+
+  + Fixed the post dates and by extension the auto-removal system! Yay!
+    Turns out I was multiplying the character codes by multiples of 256
+    instead of 65536, because UTF-16, you know... is literally UTF-*16*.
+
+  + Wrote a bit more of the manual.
+
 --    Alpha 0.2    --
 
   + Added this changelog! :)
@@ -44,171 +225,8 @@ GUIDE TO BULLET POINTS (will always be in this order)
 
   * Tweaked what cursors are used where.
 
---   Alpha 0.2.1   --
+--    Alpha 0.1    --
 
-  + Added this to the change log.
-
-  + Established that the names of update commits will use lowercase for the word update.
-
-  + Fixed the post dates and by extension the auto-removal system! Yay!
-    Turns out I was multiplying the character codes by multiples of 256
-    instead of 65536, because UTF-16, you know... is literally UTF-*16*.
-
-  + Wrote a bit more of the manual.
-
---    Alpha 0.3    --
-
-  + Downvotes actually exist now!
-
-  + The manual now includes an incomplete section all about Markdown.
-
-  + The translation engine now supports multiple variables.
-
-  * It is now COMPLETELY impossible for posts to overwrite each other. In addition to
-    this, post IDs now consist of 5 characters instead of 4.
-
-  i Removed all the bad code. What did it cost? All of the code. Basically, I just
-    rewrote postbox.js because it was a buggy mess.
-
-  ~ Most numbers are now stored as base-36 because I'm terrible.
-
-  ~ The translation engine is now a separate script that the Postbox engine depends on.
-
---   Alpha 0.3.1   --
-
-  @ Did you know there are configuration settings inside postbox.js?
-
-  @ Sorry if this version's patch notes have the sections in the wrong order,
-    I'm supposed to be sleeping.
-
-  - Removed Herobrine.
-
-  - Removed postbox-old.js. That was supposed to get deleted before release.
-
-  - Removed showdown.min.js.map.webloc. Not sure what that was.
-
-  - Removed the old duplicate changelog.txt from Postbox Web Interface.
-    Not sure how it got there.
-
-  + Postbox's Showdown configuration now has emojis enabled.
-
-  + There are now announcements in the changelog.
-
-  + The manual now links to Showdown's syntax guide.
-
-  * "Internal change" is now called "logical change."
-
-  ~ If an error occurs when loading a post, the post is just skipped instead
-    of failing to display the other posts. This behavior also applies to all
-    Postbox methods that use the postbox.read method for multiple posts, which
-    is currently just postbox.removeExpiredPosts.
-
-  i The localStorage is now reversed-sandboxed by default.
-
-  ? Going to reintroduce admin-only methods.
-
---   Alpha 0.3.2   --
-
-  ~ Apparently the error message when your post content was outside the valid
-    character range used the title character range.
-
---    Alpha 0.4    --
-
-  @ If you enable admin mode and aren't authorized you're a furry and you indent
-    your code with spaces instead of tabs.
-
-  + Began adding admin functionality. Currently the only admin methods available
-    are postbox.admin.hardReset() and postbox.admin.resetCooldowns(). If admin
-    mode is disabled and you try to use these, an error will be thrown.
-
---    Alpha 0.5    --
-
-  @ I am now going to strictly follow semantic versioning.
-
-  + Postbox now has an event system, but it doesn't really do much yet.
-
-  + The manual can now have tables in it.
-
-  + The manual now contains a proper Markdown guide. It's very incomplete, but
-    will be expanded upon in Alpha 0.5.1.
-
-  + The manual now has its own selection style!
-
-  * The default title character limit is now 60 characters instead of 50.
-
-  i Fixed the <code> style in the manual.
-
-  i Fixed the order of the bullet points in Alpha 0.3.1's changelog.
-
-  ~ Removed the trailing blank line from some of the files.
-
-  ? Planning to add a technical section to the manual.
-
-  ? Planning to add events (programming events, not social events) to Postbox.
-
-  ? Probably going to change the post title and content to use ASCII, since you
-    can use GitHub emojis on Postbox now.
-
-  ! I am aware that Markdown allows you to use any URL for a link including
-    JavaScript execution and that this is a security issue.
-
---    Alpha 0.6    --
-
-  - HTML tags can no longer be used in posts, although you can still use
-    character entities. I do plan to switch to ASCII after all.
-
-  + Added more to the Markdown guide.
-
-  + You can now define image dimensions.
-
-  + You can now use tables in your posts.
-
-  * Changed the manual background to be less GPU intensive.
-
---   Alpha 0.6.1   --
-
-  + There is now a section in the markdown guide about emojis. It currently
-    only includes emojis beginning the letter A and the B emoji, but will be
-    expanded over time as I release more versions. At least 15 more emojis in
-    the table per release until they're all included.
-
-  ? Going to modify showdown.js so that it will display images from the /emoji
-    folder instead of actual emojis, then it will look nice on all fonts. :smile:
-
---    Alpha 0.7    --
-
-  + I added Minecraft emojis because Fortnite bad.
-
-  * Using an emoji will now show an image from the /emoji directory, like I said
-    in Alpha 0.6.1. This is a big update, as it means I or anyone will be able to
-    add and remove emojis at will, but it's also a big responsibility because I
-    have to manually add all the emojis. (Oh no!) Emojis can be placed anywhere
-    within the emoji directory or any subdirectory and must be saved with the
-    file extension .png, not necessarily PNG format but who cares?
-
---    Alpha 0.8    --
-
-  @ How do I make it stop copying my JS files into the root directory?
-
-  + Add a few face emojis. Not all of them, just a few.
-
-  + Added the Alpha 0.7 changelog because apparently it didn't upload last time.
-
-  * Emojis are now GIFs. Not only does this allow animated emojis, but it also
-    reduces their file size and allows for easier pixel art coloring. I haven't
-	converted all the existing emojis yet, but those will be available soon.
-
-  i Emoji hovernotes now include the :colons:.
-
-  i Emojis are no longer draggable.
-
-  i Emojis are now 16x16 pixels so the Minecraft ones look nice.
-
-  i Emojis no longer have alt text, and will now only display the broken image icon.
-
-  i The default emojis no longer ever have under_scores in their names, as
-    _underscores_ are used in Markdown to italicize text.
-
-  ! Don't ask why the emojis aren't transparent yet. It's MS Paint.
+@ Do you think I know what I did in the initial release after that long?
 
 --                 --
