@@ -9,6 +9,19 @@ GUIDE TO BULLET POINTS (will always be in this order)
   ? w.i.p feature
   ! known bug
 
+--   Alpha 0.9.1   --
+
+  @ I haven't added normal people emojis yet, but I'll get on it when
+    GIMP stops causing me to lose brain cells.
+
+  + Added a brand new Minecraft emoji set!
+
+  * Emojis have been reverted back to PNGs because I'm lazy, and they
+    have to actually be PNGs, not just use the .png extension.
+
+  * The Alpha 0.1 patch notes are now formatted correctly and accurately
+    describe alpha 0.1.
+
 --    Alpha 0.9    --
 
   - Removed all emojis for now, so that I can try to draw them well.
@@ -227,6 +240,8 @@ GUIDE TO BULLET POINTS (will always be in this order)
 
 --    Alpha 0.1    --
 
-@ Do you think I know what I did in the initial release after that long?
+  @ I added the things.
+
+  ! It took me 13 days to notice my grammar errors...
 
 --                 --
