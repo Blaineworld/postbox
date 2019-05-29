@@ -3,8 +3,8 @@
 }
 
 body {
-	background: #181c20;
-	color: #c8c4c0;
+	background: #303336;
+	color: #e8e8e8;
 	font-family: sans-serif;
 	font-size: calc(9pt + (0.5vmin + 0.5vmax ) / 2);
 	font-variant-numeric: slashed-zero tabular-nums;
@@ -16,40 +16,28 @@ body, html {
 }
 
 button {
-	background: darkGray;
-	border: none;
-	border-radius: 7.5%;
-	box-shadow: 0 0.25ch dimGray, 0 0.25ch 0.5ch -0.125ch black, 0 0 0 transparent inset;
-	color: #181c20;
+	background: #e8e8e8;
+	border: 1px solid #202224;
+	box-shadow: 0 0 0 1px #e8e8e8 inset, 2px 2px #e8e8e8 inset, -2px -2px #202224 inset, 4px 4px #e8e8e8 inset, -3px -3px #202224 inset;
+	color: #202224;
 	cursor: pointer;
-	font-family: sans-serif;
 	font-size: calc(11.5pt + (0.625vmin + 0.625vmax ) / 2);
 	line-height: 1.1;
 	outline: none;
-	padding: 0.25ch;
-	transform: translateY(-0.25ch);
-	transition-duration: 0.125s;
-	transition-property: box-shadow, transform;
+	padding: 4px;
 	-webkit-user-select: none;
 	white-space: pre;
 }
 
-button:hover {
-	box-shadow: 0 0.4ch dimGray, 0 0.4ch 0.5ch -0.0625ch black, 0 0 0 transparent inset;
-	transform: translateY(-0.4ch);
-}
-
 button:active {
-	box-shadow: 0 0 dimGray, 0 0 0 -0.375ch black, 0 0 0.125ch black inset;
-	transform: translateY(0);
+	box-shadow: 0 0 0 1px #e8e8e8 inset, -2px -2px #e8e8e8 inset, 2px 2px #202224 inset, -4px -4px #e8e8e8 inset, 3px 3px #202224 inset;
 }
 
 button:disabled {
-	box-shadow: 0 0 transparent, 0 0 0 0 transparent, 0 0 0.25ch black inset;
-	transform: translateY(0);
+	box-shadow: none;
 }
 
-button::selection {
+button::selection, h1::selection, h2::selection, h3::selection, h4::selection, h5::selection, h6::selection, .points::selection, .post > legend > date::selection, .vote::selection, #help-button::selection {
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -59,56 +47,53 @@ h1, h2, h3, h4, h5, h6 {
 	-webkit-user-select: none;
 }
 
-h1::selection, h2::selection, h3::selection, h4::selection, h5::selection, h6::selection {
-	/* Why would you select a heading? That's just silly. */
-}
-
 hr {
-	background: #ccc4;
+	background: #e8e8e8;
 	border: none;
-	border-radius: 69.420vmax;
-	box-shadow: 0.05vh 0.05vw 0.5vmin -0.2vmin black inset;
-	height: 0.2vh;
+	border-radius: 1px;
+	height: 2px;
 	opacity: 0.75;
 }
 
 input {
-	border-radius: 420ch;
+	border-radius: 100vmax;
 }
 
 input, textarea {
 	-webkit-appearance: none;
 	background: #f0f0f0;
 	border: none;
-	border-radius: 0.25ch;
-	box-shadow: 0 0.125ch 1ch black inset;
-	color: black;
+	border-radius: 1px;
+	box-shadow: 0 0 white inset, 0 0 navy inset, 5px 0 powderBlue inset, 6px 0 navy inset;
 	font-family: Courier, Courier New, monospace;
 	font-size: calc(9pt + (0.5vmin + 0.5vmax ) / 2);
 	outline: none;
-	padding: 0.25ch;
+	padding: 0 2px 0 12px;
+	transition: 0.5s ease-in;
+	transition-property: box-shadow, background;
 }
 
-input::selection, textarea::selection {
-	background: #fc04;
+input:focus, textarea:focus {
+	background: powderBlue;
+	box-shadow: 5px 0 white inset, 6px 0 navy inset, 0 0 cornFlowerBlue inset, 0 0 navy inset;
 }
 
-::placeholder {
-	color: dimGray;
+input::placeholder, textarea::placeholder {
+	color: #202020;
 }
 
 .date {
-	background: cornFlowerBlue;
-	border-radius: 69ch;
-	box-shadow: 0 0 0.2ch black inset;
+	background: green;
+	border-radius: 100vw;
+	box-shadow: 1px 1px black inset;
 	color: white;
 	cursor: default;
 	display: inline-block;
 	font-family: Courier, Courier New, monospace;
-	font-size: 9pt;
+	font-size: 12px;
 	font-variant: small-caps;
-	height: 9pt;
-	padding: 0 0.6ch;
+	height: 12px;
+	padding: 0 6px;
 	text-transform: lowercase;
 	vertical-align: middle;
 	white-space: pre;
@@ -118,19 +103,17 @@ input::selection, textarea::selection {
 	height: 16px;
 }
 
-.points::selection {
-}
-
 .post {
-	background: #2c3038;
+	background: #202224;
 	border: none;
-	border-radius: 1%;
-	box-shadow: 0 0.5vmin 1vmax 0.125vmin #00000080;
+	border-radius: 2px;
+	box-shadow: 2px 2px #00000080;
 	font-family: Courier, Courier New, monospace;
 	margin-top: 1ch;
 	padding: 1ch;
 	padding-top: 0.5ch;
 	position: relative;
+	transform: translate(-1px, -1px);
 }
 
 .post, .post * {
@@ -141,9 +124,9 @@ input::selection, textarea::selection {
 }
 
 .post > legend {
-	background: #c8c4c0;
+	background: #d4d4d4;
 	border-radius: 1024pt;
-	color: #181c20;
+	color: #202224;
 	cursor: default;
 	font-family: Georgia, serif;
 	font-weight: bold;
@@ -156,20 +139,13 @@ input::selection, textarea::selection {
 	color: black;
 }
 
-.post > legend > .date {
-	-webkit-user-select: none;
-}
-
-.post > legend > .date::selection {
-}
-
 .vote {
-	background: darkGray;
-	border-radius: 42069px;
-	box-shadow: 0.125ch 0.125ch 0.1ch #fff6 inset, -0.125ch -0.125ch 0.1ch #0006 inset;
+	background: dimGray;
+	border-radius: 100vw;
+	box-shadow: 1px 1px #00000080;
 	cursor: default;
 	font-family: Courier New, Courier, monospace;
-	padding: 0.25ch 0.5ch;
+	padding: 2px 4px;
 	position: absolute;
 	right: 1ch;
 	text-align: center;
@@ -187,13 +163,13 @@ input::selection, textarea::selection {
 }
 
 .vote-down:hover, .vote-up:hover {
-	bottom: 0.25ch;
-	text-shadow: 0 0.25ch black;
+	text-shadow: 1px black;
+	transform: translateY(-1px);
 }
 
 .vote-down:active, .vote-up:active {
-	bottom: 0;
 	text-shadow: 0 0 black;
+	transform: none;
 }
 
 .vote-down {
@@ -204,11 +180,15 @@ input::selection, textarea::selection {
 	color: lime;
 }
 
+#branding-or-whatever {
+	margin-bottom: 1.25ch;
+}
+
 #gui {
 	background: #484c50;
 	bottom: 0;
-	box-shadow: 0 0 1vmax 0.5vmin black;
-	height: 15.75ch;
+	box-shadow: 0 0 0 1px black, 0 0 0 2px #0004;
+	height: 12.5ch;
 	left: 0;
 	padding: 0.25ch;
 	position: absolute;
@@ -217,42 +197,36 @@ input::selection, textarea::selection {
 
 #help-button {
 	background: white;
-	background: radial-gradient(white 50%, transparent 75%), radial-gradient(circle at bottom right, dimGray, white 75%);
-	border-radius: 100%;
-	color: darkBlue;
+	color: navy;
 	cursor: pointer;
-	font-size: 6.25ch;
+	display: block;
+	font-size: 64px;
 	font-weight: bold;
-	height: 2ch;
-	line-height: 125%;
+	height: 64px;
 	position: fixed;
-	right: -0.4ch;
+	right: -10px;
 	text-align: center;
-	top: -0.4ch;
-	transform: none;
-	transition-duration: 1s;
-	transition-property: transform;
+	top: -10px;
+	transform: rotate(0.02turn);
+	transition: 0.5s transform ease-in;
 	-webkit-user-select: none;
-	width: 2ch;
+	width: 64px;
 }
 
 #help-button:hover {
-	transform: scale(1.1);
+	transform: rotate(1.02turn);
 }
 
 #help-button:active {
-	transform: scale(0.9);
-	transition-duration: 0.05s;
-	transition-timing-function: ease-in;
-}
-
-#help-button::selection {
+	transform: rotate(0.99turn);
+	transition: 0.125s transform ease-in;
 }
 
 #inputtitle, #inputcontent {
 	display: block;
 	margin: auto;
 	padding: 0.5vmin;
+	padding-left: 6px;
 	resize: none;
 	width: 94vw;
 }
@@ -278,20 +252,19 @@ input::selection, textarea::selection {
 }
 
 #posts {
-	background: #606864;
-	border-radius: 2pt;
-	bottom: 0;
-	box-shadow: 0 0.5vmin 1vmax black inset;
+	background: #302424;
+	border-radius: 1px;
+	bottom: 32px;
+	box-shadow: 0 1px black inset, 0 2px #0006 inset;
 	left: 5pt;
 	overflow-y: scroll;
 	position: absolute;
 	right: 5pt;
-	top: 6ch;
+	top: 8ch;
 }
 
 #writegui {
 	background: #484c50;
-	border-radius: 1.25%;
 	box-shadow: 0 0 5vmax -1vmin black inset;
 	height: 96vh;
 	left: -2vw;
@@ -300,6 +273,6 @@ input::selection, textarea::selection {
 	position: absolute;
 	top: -2vh;
 	transform: translateY(75.75vh) scale(-0.5);
-	transition: 1s transform, opacity;
+	transition: 0.5s transform, opacity ease-out;
 	width: 96vw;
 }

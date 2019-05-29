@@ -9,7 +9,21 @@ GUIDE TO BULLET POINTS (will always be in this order)
   ? w.i.p feature
   ! known bug
 
---   Alpha 0.9.2    --
+--   Alpha  0.10   --
+
+  @ I'm going to try to make more substantial releases from now on
+    instead of quick series of many tiny releases.
+
+  + Postbox has a new, higher contrast look, and I made the CSS more D.R.Y!
+    It looks kind of retro-y now, maybe I'll incorporate that in the next update.
+
+  * Fixed the header on the Alpha 0.9.3 patch notes.
+
+  i Blockquotes are actually rendered now!
+
+  i The vote buttons now visually press properly!
+
+--   Alpha 0.9.2   --
 
   @ Is it weird that for some reason whenever I draw a smiley I start
     to actually do whatever facial expression I'm drawing?
@@ -252,6 +266,11 @@ GUIDE TO BULLET POINTS (will always be in this order)
 --    Alpha 0.1    --
 
   @ I added the things.
+
+  @ This release is only in here for historical purposes. There wasn't really an
+    alpha 0.1; the first named version was actually alpha 0.2.
+
+  + I added the things.
 
   ! It took me 13 days to notice my grammar errors...
 

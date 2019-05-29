@@ -8,20 +8,20 @@
 }
 
 .post a {
-	color: cornFlowerBlue;
-	transition: 1s color;
+	color: greenYellow;
+	transition: 0.25s color ease-in;
 }
 
 .post a:active {
-	color: steelBlue;
+	color: oliveDrab;
 }
 
 .post a:visited {
-	color: fuchsia;
+	color: orange;
 }
 
 .post a:visited:active {
-	color: brown;
+	color: darkOrange;
 }
 
 .post a:disabled {
@@ -29,9 +29,11 @@
 }
 
 .post blockquote {
+	border-left: 0.05ch solid lightGray;
 	display: inline-block;
 	font-weight: light;
-	margin-left: 1.25ch;
+	margin-left: 0.6ch;
+	padding-left: 0.6ch;
 	position: relative;
 }
 
@@ -40,35 +42,15 @@
 	color: white;
 }
 
-.post blockquote::before {
-	background: khaki;
-	border-radius: 0.4ch;
-	box-shadow: 0 0.25ch 0.5ch black inset;
-	color: red;
-	content: '“';
-	display: inline-block;
-	height: 0;
-	font-weight: bold;
-	font-size: 20pt;
-	left: 0;
-	line-height: 0;
-	position: absolute;
-	top: 0;
-}
-
-.post blockquote::before::selection {
-}
-
 .post code {
 	background: lightGray;
-	border-radius: 0.25ch;
-	box-shadow: 0 0.08ch 0.125ch black inset;
+	border-radius: 0.05ch;
+	box-shadow: 1px 1px 0 1px #0008;
 	color: black;
 	cursor: copy;
 	display: inline-block;
-	padding: 0.125ch;
-	transition-duration: 1s;
-	transition-property: background, color;
+	padding: 0.075ch;
+	transition: 0.5s background, color ease-out;
 }
 
 .post code::selection {
@@ -98,7 +80,7 @@
 
 .post li {
 	cursor: copy;
-	transition: 1s color;
+	transition: 0.75s color, ease-out;
 }
 
 .post li:hover {
@@ -112,7 +94,7 @@
 .post table {
 	border-collapse: collapse;
 	box-shadow: 0 0.2ch 0.25ch -0.2ch black;
-	transition: 1s box-shadow;
+	transition: 0.5s box-shadow ease-in;
 }
 
 .post table:hover {

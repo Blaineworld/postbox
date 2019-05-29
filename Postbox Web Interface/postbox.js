@@ -182,7 +182,7 @@ translate.register({
 		if (!object.title)
 			delete object.title;
 		object.markdown = raw.substring(currentNull + 1, raw.length);
-		object.html = converter.makeHtml(object.markdown.replace(/</g, "&lt;").replace(/>/g, "&gt;"));
+		object.html = converter.makeHtml(object.markdown.replace(/</g, "&lt;"));
 		object.removalTime = Number(object.date) + postExistence * 1000 + object.points * voteInfluence;
 		return object;
 	}
