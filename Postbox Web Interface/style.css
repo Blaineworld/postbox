@@ -101,6 +101,7 @@ input::placeholder, textarea::placeholder {
 
 .emoji {
 	height: 16px;
+	vertical-align: middle;
 }
 
 .post {
@@ -241,23 +242,18 @@ input::placeholder, textarea::placeholder {
 	font-family: Courier, Courier New, monospace;
 }
 
-#padding {
-	bottom: 0;
-	height: 20ch;
-	width: 100%;
-}
-
 #post-id {
 	display: none;
 }
 
 #posts {
 	background: #302424;
-	border-radius: 1px;
-	bottom: 32px;
+	border-radius: 2px;
+	bottom: 14ch;
 	box-shadow: 0 1px black inset, 0 2px #0006 inset;
 	left: 5pt;
 	overflow-y: scroll;
+	padding: 2pt;
 	position: absolute;
 	right: 5pt;
 	top: 8ch;

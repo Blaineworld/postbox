@@ -9,15 +9,44 @@ GUIDE TO BULLET POINTS (will always be in this order)
   ? w.i.p feature
   ! known bug
 
+--  Alpha  0.10.1  --
+
+  @ I need someone to do some testing in browsers other than just
+    Safari and Chrome.
+
+  @ Most -.-.x will contain emojis, and as such they do not warrant another -.x.
+
+  @ The character encoding will not be switched to ASCII. Don't fix what ain't broken.
+
+  + Added the halo, love, heart eyes, star-struck, kissy face, blowing a kiss, slow kiss,
+    happy kiss, mmm, tongue out, tongue wink, silly, mean face, and money mouth emojis.
+
+  * The "happy" emoji is now more friendly looking.
+
+  * The patch notes from version 0.10 now refer to the next *major* update.
+
+  * The post list is now more rounded and has padding like before.
+
+  i Emojis are non-draggable again! Not sure how that happened.
+
+  i Emojis are now aligned properly to the bottom of the text.
+
+  i The patch note for fixing the header on the patch notes for 0.9.2 now
+    correctly says 0.9.2, and not 0.9.3.
+
+  i The post list isn't covered up by the GUI at the bottom anymore.
+
+  ! I am fully aware that Postbox needs a smarter sorting algorithm. I'll work on it.
+
 --   Alpha  0.10   --
 
   @ I'm going to try to make more substantial releases from now on
     instead of quick series of many tiny releases.
 
-  + Postbox has a new, higher contrast look, and I made the CSS more D.R.Y!
-    It looks kind of retro-y now, maybe I'll incorporate that in the next update.
+  + Postbox has a new, higher contrast look, and I made the CSS more D.R.Y! It looks
+    kind of retro-y now, maybe I'll incorporate that in the next major update.
 
-  * Fixed the header on the Alpha 0.9.3 patch notes.
+  * Fixed the header on the Alpha 0.9.2 patch notes.
 
   i Blockquotes are actually rendered now!
 
