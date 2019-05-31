@@ -175,6 +175,7 @@ translate.register({
 	};
 
 	const methodExists = function(id) {
+		// Does this post exist?
 		return ls.getItem("POST-" + id) !== null;
 	};
 
@@ -187,7 +188,24 @@ translate.register({
 		return id;
 	};
 
+	const methodLastPosted = function() {
+		// When was the last time anyone posted?
+		var d = ls.getItem("DATA-pt");
+		if (!d)
+			return null;
+		return new Date(parseInt(d, 36));
+	};
+
+	const methodLastVoted = function() {
+		// When was the last time anyone voted?
+		var d = ls.getItem("DATA-vt");
+		if (!d)
+			return null;
+		return new Date(parseInt(d, 36));
+	};
+
 	const methodPost = function(bodyText, titleText = "") {
+		// Create a post on Postbox!
 		var content = String(bodyText), title = String(titleText), id = methodGeneratePostID(), cooldown = methodPostCooldown();
 		if (content.length < postBodyMin)
 			throw translate("error.post.tooShort", content.length, postBodyMin);
@@ -214,30 +232,6 @@ translate.register({
 	const methodPostCooldown = function() {
 		// How many seconds until I can post again?
 		return (Math.max(0, postCooldown * 1000 - (Date.now() - parseInt(ls.getItem("DATA-pt") || "0", 36))) || 0) / 1000;
-	};
-
-	const methodReadOld = function(id) {
-		// Read a specific post, or throw an error if something goes wrong.
-		var raw = ls.getItem("POST-" + id), object = {
-			"raw": raw,
-			"markdown": "",
-			"html": "",
-			"identifier": String(id)
-		}, currentNull = 0, nulls = (String(raw).match(/\0/g) || []).length;
-		if (raw === null)
-			throw translate("error.read.nonexistent", id);
-		if (nulls !== 3)
-			throw translate("error.read.wrongNullCount", id, nulls, 3);
-		object.points = parseInt(raw.substring(0, currentNull = raw.indexOf(NULL)), 36) || 0;
-		(object.date = new Date()).setTime(parseInt(raw.substring(currentNull + 1, currentNull = raw.indexOf(NULL, currentNull + 1)), 36) || 0);
-		object.posted = formatDate(object.date);
-		object.title = raw.substring(currentNull + 1, currentNull = raw.indexOf(NULL, currentNull + 1));
-		if (!object.title)
-			delete object.title;
-		object.markdown = raw.substring(currentNull + 1, raw.length);
-		object.html = converter.makeHtml(object.markdown.replace(/</g, "&lt;"));
-		object.removalTime = Number(object.date) + postExistence * 1000 + object.points * voteInfluence;
-		return object;
 	};
 
 	const methodRead = function(id) {
@@ -315,13 +309,17 @@ translate.register({
 		return object.points;
 	};
 
+	const methodVersion = function() {
+		return "Alpha 1.1";
+	};
+
 	const methodVoteCooldown = function() {
 		// How many seconds until I can vote again?
 		return (Math.max(0, voteCooldown * 1000 - (Date.now() - parseInt(ls.getItem("DATA-vt") || "0", 36))) || 0) / 1000;
 	};
 
 	/* # Initialization */
-	let pb = window.postbox = function createPostboxPost(content, title) {
+	let pb = window.Postbox = function createPostboxPost(content, title) {
 		// Create a Postbox post.
 		return methodPost(content, title);
 	};
@@ -330,11 +328,14 @@ translate.register({
 	pb.downvote = methodDownvote;
 	pb.exists = methodExists;
 	pb.generatePostID = methodGeneratePostID;
+	pb.lastPosted = methodLastPosted;
+	pb.lastVoted = methodLastVoted;
 	pb.post = methodPost;
 	pb.removeExpiredPosts = methodRemoveExpiredPosts;
 	pb.read = methodRead;
 	pb.titleSize = methodTitleSize;
 	pb.upvote = methodUpvote;
+	pb.version = methodVersion;
 	pb.voteCooldown = methodVoteCooldown;
 
 	let admin = pb.admin = {

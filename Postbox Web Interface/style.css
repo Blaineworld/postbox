@@ -2,6 +2,15 @@
 	background: papayaWhip;
 }
 
+::-webkit-scrollbar {
+	background: black;
+}
+
+::-webkit-scrollbar-thumb {
+	background: silver;
+	border-radius: 100vw;
+}
+
 * {
 	image-rendering: pixelated;
 }
@@ -25,22 +34,27 @@ button {
 	box-shadow: 0 0 0 1px #e8e8e8 inset, 2px 2px #e8e8e8 inset, -2px -2px #202224 inset, 4px 4px #e8e8e8 inset, -3px -3px #202224 inset;
 	color: #202224;
 	cursor: pointer;
-	font-size: calc(11.5pt + (0.625vmin + 0.625vmax ) / 2);
+	font-size: calc(9pt + (0.5625vmin + 0.5625vmax ) / 2);
 	line-height: 1.1;
 	outline: none;
-	padding: 4px;
-	transition: 0.2s box-shadow ease-out;
+	padding: 1px 3px 3px 1px;
+	transition: 0.2s ease-out;
+	transition-property: box-shadow, padding;
 	-webkit-user-select: none;
+	vertical-align: text-bottom;
 	white-space: pre;
 }
 
 button:active {
 	box-shadow: 0 0 0 1px #e8e8e8 inset, -2px -2px #e8e8e8 inset, 2px 2px #202224 inset, -4px -4px #e8e8e8 inset, 3px 3px #202224 inset;
-	transition: 0.1s box-shadow ease-in;
+	padding: 3px 1px 1px 3px;
+	transition: 0.1s ease-in;
 }
 
 button:disabled {
-	box-shadow: none;
+	box-shadow:  0 0 0 1px #e8e8e8 inset, -2px -2px #e8e8e8 inset, 0 0 #202224 inset, -4px -4px #e8e8e8 inset, 0px 0px #202224 inset;
+	margin: 0;
+	padding: 4px;
 }
 
 button::selection, h1::selection, h2::selection, h3::selection, h4::selection, h5::selection, h6::selection, .points::selection, .post > legend > date::selection, .vote::selection, #help-button::selection {
@@ -238,9 +252,9 @@ input::placeholder, textarea::placeholder {
 	font-weight: bold;
 	height: 64px;
 	position: fixed;
-	right: -10px;
+	right: -6.25px;
 	text-align: center;
-	top: -10px;
+	top: -6.25px;
 	transform: scale(1.125) rotate(0.02turn);
 	transition: 0.5s transform ease-in;
 	-webkit-user-select: none;
@@ -290,6 +304,24 @@ input::placeholder, textarea::placeholder {
 	position: absolute;
 	right: 5pt;
 	top: 8ch;
+}
+
+#version {
+	bottom: 0;
+	color: white;
+	left: 0;
+	opacity: 0.75;
+	position: absolute;
+	transition: 2s ease-out;
+	transition-property: color, opacity;
+}
+
+#version:hover {
+	opacity: 1;
+}
+
+#version:active {
+	color: silver;
 }
 
 #writegui {

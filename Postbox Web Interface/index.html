@@ -15,11 +15,12 @@
 		<script language "Javascript" src="compat.js"></script>
 	</head>
 	<body>
-		<h1 id="branding-or-whatever">Postbox</h1>
+		<h1 id="branding-or-whatever" title="ˢᵉᶜʳᵉᵗ ᵐᵉˢˢᵃᵍᵉ ᵈᵒⁿ'ᵗ ᵗᵉˡˡ ᵃⁿʸᵒⁿᵉ">Postbox</h1>
 		<div id="help-button" title="View Manual" onclick="window.open('manual/index.html')">?</div>
 		<div id="posts"></div>
 		<div id="gui">
-			<button onclick="writegui.style.transform='none';writegui.style.opacity='0.98'" style="position:absolute;bottom:1vh;right:1vw;font-size:200%" title="Write a Post">✏️ Compose</button>
+			<button onclick="writegui.style.transform='none';writegui.style.opacity='0.98'" style="position:absolute;bottom:1vh;right:1vw;font-size:200%" title="Put up something new.">  <b>+</b> Create  </button>
+			<a id="version" href="../changelog.txt"></a>
 		</div>
 		<div id="writegui">
 			<button onclick="writegui.style.transform='translateY(75.75vh) scale(-0.5)';writegui.style.opacity='0.25';nope.innerText=inputtitle.value=inputcontent.value=''" title="Cancel" id="cancelbutton">X</button>
@@ -28,7 +29,7 @@
 			<input type="text" placeholder="Untitled" id="inputtitle" title="Post Title Box"></textarea>
 			<hr></hr>
 			<textarea placeholder="Content" id="inputcontent" title="Post Body Text Box"></textarea>
-			<button style="top: 1.25vh;right:3vw;position:fixed" onclick="try{render(postbox.read(postbox(inputcontent.value,inputtitle.value)));renderPosts();noVoteStyles.disabled=false;setTimeout(disableNoVoteStyles,postbox.voteCooldown()*1000);cancelbutton.click()}catch(error){nope.innerText=error;throw error}"><b>PUT IT UP!</b></button>
+			<button style="top: 1.25vh;right:3vw;position:fixed" onclick="try{render(Postbox.read(Postbox(inputcontent.value,inputtitle.value)));renderPosts();noVoteStyles.disabled=false;setTimeout(disableNoVoteStyles,Postbox.voteCooldown()*1000);cancelbutton.click()}catch(error){nope.innerText=error;throw error}"><b>PUT IT UP!</b></button>
 		</div>
 		<script language "Javascript" src="showdown.js"></script>
 		<script language "Javascript" src="translate.js"></script>

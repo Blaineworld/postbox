@@ -6,8 +6,72 @@ GUIDE TO BULLET POINTS (will always be in this order)
   * changed something
   i bug fix
   ~ logical change
-  ? w.i.p feature
+  ? w.i.p/planned feature
   ! known bug
+
+--    Alpha 1.1    --
+
+  @ Humidity is just a measure of how juicy the air is.
+
+  @ Note that the :minecraft/fish: emoji is a tropical fish (clownfish). For cod,
+    use :cod:, and for salmon, use :salmon:.
+
+  @ The animation for falling off the edge was originally much more realistic,
+    but the performance wasn't that great so I changed it to a simple wipe.
+
+  + Added emoji from Hugging Face to Drooling Face. (That's 18 emoji.)
+
+  + Added the following Minecraft emoji: Horse Armor, Melon Slice, and Nether Wart
+
+  + Added three new methods: Postbox.version(), .lastPosted() and .lastVoted().
+
+  + Buttons have proper depth to them now.
+
+  + The part in the manual about headings now includes duplicate headings' IDs.
+
+  + The version number is now visible from the web interface and clicking on it
+    opens this changelog.
+
+  + The web interface has a custom scrollbar to better fit the design of the page in
+    Webkit browsers. (Seriously, why is there no standard way to style scrollbars?)
+
+  * All Minecraft tool and armor emoji are now iron for consistency.
+
+  * Buttons are now less  Y U G E .
+
+  * Changed all instances of change log to changelog except that.
+
+  * Changed all references to emoji in the changelog to use :colons:.
+
+  * Compose button is now the Create button.
+
+  * Corrected a tiny number of grammar mistakes from previous changelogs.
+
+  * Hovernotes on things are now more descriptive.
+
+  * Reduced the file size of several Minecraft emoji.
+
+  * The :minecraft/bed: emoji is now a cyan bed for aesthetic reasons.
+
+  * The shading on emoji teeth is now more noticable.
+
+  * W.I.P feature is now W.I.P/planned feature.
+
+  i Disabling buttons has a proper animation now.
+
+  i Fixed the splotches on the emoji.
+
+  i The help button doesn't go too far off the edge of the screen anymore.
+
+  ~ Added more post IDs.
+
+  ~ Renamed postbox to Postbox.
+
+  ~ Removed the declaration methodPostOld because I forgot to in alpha 1.0.
+
+  ? Definitely need to make the changelog and manual open in frames.
+
+  ? I think I might add fonts and/or text colors, what do you think?
 
 --    Alpha 1.0    --
 
@@ -27,7 +91,7 @@ GUIDE TO BULLET POINTS (will always be in this order)
 
   + Added future-proofing for the post format in the form of a 16-bit version number.
 
-  + Added "minecraft/brewing-stand" and "minecraft/broken-elytra" because I'm a liar.
+  + Added :minecraft/brewing-stand: and :minecraft/broken-elytra: because I'm a liar.
 
   + Automatic self-upvoting can now be changed and triggers the vote cooldown.
 
@@ -75,29 +139,29 @@ GUIDE TO BULLET POINTS (will always be in this order)
 
   * Post titles must now be at least 12 characters, 4 more than the previous 9.
 
-  * Renamed the "faceless" emoji to "head".
+  * Renamed the :faceless: emoji to :head:.
 
-  * Renamed the "minecraft/useless" emoji to "minecraft/diamond-hoe".
+  * Renamed the :minecraft/useless: emoji to :minecraft/diamond-hoe:.
 
-  * Renamed the "tongue wink" emoji to "silly wink".
+  * Renamed the :tongue-wink: emoji to :silly-wink:.
 
-  * The beaming emoji is no longer creepy!
+  * The :beaming: emoji is no longer creepy!
 
-  * The blowing a kiss emoji no longer looks like it got punched in the face.
+  * The :blowing-a-kiss: emoji no longer looks like it got punched in the face.
 
-  * The grinning emoji now faces the viewer!
+  * The :grinning: emoji now faces the viewer!
 
-  * The happy emoji is now even happier!
+  * The :happy: emoji is now even happier!
 
-  * The silly emoji no longer looks like it scrambled eggs for eyes!
+  * The :silly: emoji no longer looks like it scrambled eggs for eyes!
 
-  * The smiling emoji now has a smaller smile to be less creepy!
+  * The :smiling: emoji now has a smaller smile to be less creepy!
 
-  * The upside down face emoji now has correct shading.
+  * The :upside-down: face emoji now has correct shading.
 
-  * The wide eyed grin emoji is no longer creepy and faces the other way.
+  * The :wide-eyed-grin: emoji is no longer creepy and faces the other way.
 
-  * The winky face emoji now smiles wider on one side.
+  * The :wink: emoji now smiles wider on one side.
 
   i All text selection is red inside block quotes like it was supposed to be.
 
@@ -114,7 +178,7 @@ GUIDE TO BULLET POINTS (will always be in this order)
   i The manual and changelog now use emoji as the plural for emoji. Emoji is technically
     more correct, since it is correct in multiple languages.
 
-  i The "minecraft/bed" emoji is no longer 14.9 kibibytes in size. I swear I copied it
+  i The :minecraft/bed: emoji is no longer 14.9 kibibytes in size. I swear I copied it
     directly from the resource pack on [ https://minecraft.net/addons ]!
 
   ~ The localStorage variable is now declared as a constant.
@@ -140,7 +204,7 @@ GUIDE TO BULLET POINTS (will always be in this order)
   + Added the halo, love, heart eyes, star-struck, kissy face, blowing a kiss, slow kiss,
     happy kiss, mmm, tongue out, tongue wink, silly, mean face, and money mouth emoji.
 
-  * The "happy" emoji is now more friendly looking.
+  * The :happy: emoji is now more friendly looking.
 
   * The help button has slightly rounded corners now.
 
@@ -148,9 +212,9 @@ GUIDE TO BULLET POINTS (will always be in this order)
 
   * The post list is now more rounded and has padding like before.
 
-  i emoji are non-draggable again! Not sure how that happened.
+  i Emoji are non-draggable again! Not sure how that happened.
 
-  i emoji are now aligned properly to the bottom of the text.
+  i Emoji are now aligned properly to the bottom of the text.
 
   i The patch note for fixing the header on the patch notes for 0.9.2 now
     correctly says 0.9.2, and not 0.9.3.
@@ -367,7 +431,7 @@ GUIDE TO BULLET POINTS (will always be in this order)
 
 --   Alpha 0.2.1   --
 
-  + Added this to the change log.
+  + Added this to the changelog.
 
   + Established that the names of update commits will use lowercase for the word update.
 
