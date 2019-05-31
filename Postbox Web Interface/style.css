@@ -256,7 +256,7 @@ input::placeholder, textarea::placeholder {
 	text-align: center;
 	top: -6.25px;
 	transform: scale(1.125) rotate(0.02turn);
-	transition: 0.5s transform ease-in;
+	transition: 0.5s transform ease-out;
 	-webkit-user-select: none;
 	width: 64px;
 	z-index: 9999;
@@ -268,7 +268,7 @@ input::placeholder, textarea::placeholder {
 
 #help-button:active {
 	transform: scale(0.875) rotate(0.99turn);
-	transition: 0.2s transform ease-in;
+	transition: 0.1s transform ease-in;
 }
 
 #help {
@@ -280,7 +280,7 @@ input::placeholder, textarea::placeholder {
 	top: 0;
 	transform: rotateX(90deg);
 	transform-origin: 50% 0;
-	transition: 2s transform;
+	transition: 0.75s transform;
 	width: 100vw;
 	z-index: 9998;
 }
@@ -322,13 +322,15 @@ input::placeholder, textarea::placeholder {
 }
 
 #version {
-	bottom: 0;
+	bottom: 1vh;
 	color: white;
-	left: 0;
+	font-size: 120%;
+	left: 1vw;
 	opacity: 0.75;
 	position: absolute;
 	transition: 2s ease-out;
 	transition-property: color, opacity;
+	-webkit-user-select: none;
 }
 
 #version:hover {
@@ -339,16 +341,22 @@ input::placeholder, textarea::placeholder {
 	color: silver;
 }
 
+#version::selection {
+	background: none;
+}
+
 #writegui {
 	background: #484c50;
 	box-shadow: 0 0 5vmax -1vmin black inset;
 	height: 96vh;
 	left: -2vw;
-	opacity: 0.25;
+	opacity: 0.875;
 	padding: 3vh 3vw;
 	position: absolute;
 	top: -2vh;
-	transform: translateY(75.75vh) scale(-0.5);
-	transition: 0.5s transform, opacity ease-out;
+	transform: rotateX(90deg);
+	transform-origin: 50% 100%;
+	transition: 0.4s transform linear;
 	width: 96vw;
+	z-index: 10000;
 }

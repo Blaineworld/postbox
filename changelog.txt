@@ -9,6 +9,26 @@ GUIDE TO BULLET POINTS (will always be in this order)
   ? w.i.p/planned feature
   ! known bug
 
+--   Alpha 1.1.2   --
+
+  + The post creation GUI now has a quicker, smoother AND nicer animation!
+
+  * Changed the hovernote for the close button on the post creation GUI.
+
+  * The animation for opening and closing the manual takes 26% of the time!
+
+  * The corners on the post area are now 100% more rounded!
+
+  * The press animation on the help button is now 100% faster!
+
+  * T H I C C ened the X on the close button on the post creation GUI.
+
+  i The help button no longer appears above the post creation GUI.
+
+  i The version number isn't  S C R O N C H E D  anymore.
+
+  i You can't select the version number anymore.
+
 --   Alpha 1.1.1   --
 
   - Clicking on the version number no longer opens the changelog because I'm lazy.

@@ -310,7 +310,7 @@ translate.register({
 	};
 
 	const methodVersion = function() {
-		return "Alpha 1.1.1";
+		return "Alpha 1.1.2";
 	};
 
 	const methodVoteCooldown = function() {

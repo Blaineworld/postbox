@@ -19,11 +19,11 @@
 		<div id="help-button" title="View Manual" onclick="if(!help.src.replace('about:blank','')){this.innerText='↺';this.title='Back to Postbox!';this.style.color='maroon';help.style.transform='none';help.src='manual/index.html'}else{this.innerText='?';this.title='View Manual';this.style.color='';help.style.transform=''}">?</div>
 		<div id="posts"></div>
 		<div id="gui">
-			<button onclick="writegui.style.transform='none';writegui.style.opacity='0.98'" style="position:absolute;bottom:1vh;right:1vw;font-size:200%" title="Put up something new.">  <b>+</b> Create  </button>
+			<button onclick="writegui.style.transform='none'" style="position:absolute;bottom:1vh;right:1vw;font-size:200%" title="Put up something new.">  <b>+</b> Create  </button>
 			<a id="version"></a>
 		</div>
 		<div id="writegui">
-			<button onclick="writegui.style.transform='translateY(75.75vh) scale(-0.5)';writegui.style.opacity='0.25';nope.innerText=inputtitle.value=inputcontent.value=''" title="Cancel" id="cancelbutton">X</button>
+			<button onclick="writegui.style.transform='';nope.innerText=inputtitle.value=inputcontent.value=''" title="Nevermind" id="cancelbutton"><b>X</b></button>
 			<span id="nope"></span>
 			<br></br>
 			<input type="text" placeholder="Untitled" id="inputtitle" title="Post Title Box"></textarea>
