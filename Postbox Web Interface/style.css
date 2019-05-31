@@ -259,6 +259,7 @@ input::placeholder, textarea::placeholder {
 	transition: 0.5s transform ease-in;
 	-webkit-user-select: none;
 	width: 64px;
+	z-index: 9999;
 }
 
 #help-button:hover {
@@ -268,6 +269,20 @@ input::placeholder, textarea::placeholder {
 #help-button:active {
 	transform: scale(0.875) rotate(0.99turn);
 	transition: 0.2s transform ease-in;
+}
+
+#help {
+	background: indigo;
+	border: none;
+	height: 100vh;
+	left: 0;
+	position: fixed;
+	top: 0;
+	transform: rotateX(90deg);
+	transform-origin: 50% 0;
+	transition: 2s transform;
+	width: 100vw;
+	z-index: 9998;
 }
 
 #inputtitle, #inputcontent {

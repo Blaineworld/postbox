@@ -9,12 +9,24 @@ GUIDE TO BULLET POINTS (will always be in this order)
   ? w.i.p/planned feature
   ! known bug
 
+--   Alpha 1.1.1   --
+
+  - Clicking on the version number no longer opens the changelog because I'm lazy.
+
+  + Added the Sleeping Face emoji (:sleeping:).
+
+  + The manual now opens in a window kind of thing.
+
+  i Fixed the names of the Minecraft fish emoji in Alpha 1.1's changelog.
+
+  ~ The help button is now on top of everything so you can close the manual.
+
 --    Alpha 1.1    --
 
   @ Humidity is just a measure of how juicy the air is.
 
   @ Note that the :minecraft/fish: emoji is a tropical fish (clownfish). For cod,
-    use :cod:, and for salmon, use :salmon:.
+    use :minecraft/cod:, and for salmon, use :minecraft/salmon:.
 
   @ The animation for falling off the edge was originally much more realistic,
     but the performance wasn't that great so I changed it to a simple wipe.

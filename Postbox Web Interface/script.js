@@ -6,6 +6,17 @@ inputcontent.placeholder = translate("ui.placeholder.content", inputcontent.minL
 var noVoteStyles = document.querySelector("#no-vote-styles");
 setTimeout(disableNoVoteStyles, Postbox.voteCooldown() * 1000);
 
+function helpTransitionEnd() {
+	if (this.style.transform !== "none")
+		this.src = "about:blank";
+}
+
+help.addEventListener("webkittransitionend", helpTransitionEnd);
+help.addEventListener("moztransitionend", helpTransitionEnd);
+help.addEventListener("mstransitionend", helpTransitionEnd);
+help.addEventListener("otransitionend", helpTransitionEnd);
+help.addEventListener("transitionend", helpTransitionEnd);
+
 function render(post) {
 	// Render a post.
 	var e, f;
