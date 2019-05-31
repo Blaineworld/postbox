@@ -1,0 +1,7 @@
+Version 0:
+  A:[ 2 bytes version           ]
+  B:[ 6 bytes date              ]
+  C:[ 4 bytes score             ]
+  D:[ 2 bytes title length      ]
+  E:[ D bytes title text        ]
+  F:[ variable markdown content ]

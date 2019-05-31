@@ -9,27 +9,148 @@ GUIDE TO BULLET POINTS (will always be in this order)
   ? w.i.p feature
   ! known bug
 
+--    Alpha 1.0    --
+
+  @ Added no new emoji. Instead, I editing some existing ones, which can be seen below.
+    In case you're wondering, I'm trying to add all the Unicode emoji in the order they
+    are listed on [ https://emojipedia.org/people/ ] and next up is Hugging Face.
+
+  @ I did some testing in Firefox and everything works there too! (It seems that it's
+    actually faster that Chrome on my Raspberry Pi, which contradicts my experience
+    using it on my laptop where it was slower than Chrome.)
+
+  @ I've decided that URLs in the changelog will be [ in spaced square brackets ].
+
+  + Added a new post format!
+
+  + Added a specification for the new post format.
+
+  + Added future-proofing for the post format in the form of a 16-bit version number.
+
+  + Added "minecraft/brewing-stand" and "minecraft/broken-elytra" because I'm a liar.
+
+  + Automatic self-upvoting can now be changed and triggers the vote cooldown.
+
+  + A new administrator method, postbox.admin.write(id, data), has been added and is used
+    in all methods that change posts, such as postbox.post(content, title) and
+    postbox.upvote(id) in order to more easily save the new format.
+
+  + A new method, postbox.exists(id), has been added.
+
+  + Buttons now have a short press/unpress animation.
+
+  + Thanks to the new format not using them, you can use nulls in your post title now!
+
+  + The help button is now 12.5% bigger and has a nicer animation.
+
+  + The manual has extra white space at the bottom to make it easier to read.
+
+  + The manual now has an edge to fall off of so the joke works. I'm very proud of it,
+    pointless as it may be, and you CAN actually fall off, so be careful!
+
+  + There is now a compat.js file, which I will use to fix things that don't work in
+    certain browsers. For example, did you know that Internet Explorer actually doesn't
+    support the includes(search, searchIndex) method on objects that have it? (Please
+    note that this does not mean I have tested on IE, but if it works on IE that's great.)
+
+  + You can now select text on headings in all browsers, but you still can't see it.
+
+  * All emoji that show them have more defined teeth!
+
+  * Decreased the file size of some emoji by resaving them without any extra data.
+
+  * Decreased the post ID size to two characters instead of five, because there really
+    won't ever be 9,216 posts at any given time.
+
+  * emoji now have-dashes-for-spacing where they would previously havenospacing.
+
+  * Ended up switching to ASCII after all! That might change, though.
+
+  * Modified the manual background.
+
+  * Posts are now stored in a binary format, so all prior posts are broken. Luckily
+    nobody uses this software or whatever it is yet!
+
+  * Post titles can now be up to 60 characters, 10 more than the previous 50.
+
+  * Post titles must now be at least 12 characters, 4 more than the previous 9.
+
+  * Renamed the "faceless" emoji to "head".
+
+  * Renamed the "minecraft/useless" emoji to "minecraft/diamond-hoe".
+
+  * Renamed the "tongue wink" emoji to "silly wink".
+
+  * The beaming emoji is no longer creepy!
+
+  * The blowing a kiss emoji no longer looks like it got punched in the face.
+
+  * The grinning emoji now faces the viewer!
+
+  * The happy emoji is now even happier!
+
+  * The silly emoji no longer looks like it scrambled eggs for eyes!
+
+  * The smiling emoji now has a smaller smile to be less creepy!
+
+  * The upside down face emoji now has correct shading.
+
+  * The wide eyed grin emoji is no longer creepy and faces the other way.
+
+  * The winky face emoji now smiles wider on one side.
+
+  i All text selection is red inside block quotes like it was supposed to be.
+
+  i Calling postbox.admin.amIIn() now actually works instead of throwing an error.
+
+  i Fixed the "Postbox" heading at the top and made it less distracting.
+
+  i Fixed the Minecraft emoji that had underscores in their names.
+
+  i Somewhere along the line, the tears of joy emoji got replaced with the faceless emoji.
+
+  i The emoji section of the manual is now up-to-date.
+
+  i The manual and changelog now use emoji as the plural for emoji. Emoji is technically
+    more correct, since it is correct in multiple languages.
+
+  i The "minecraft/bed" emoji is no longer 14.9 kibibytes in size. I swear I copied it
+    directly from the resource pack on [ https://minecraft.net/addons ]!
+
+  ~ The localStorage variable is now declared as a constant.
+
+  ~ The main selection style is now in the main stylesheet instead of the content one.
+
+  ~ The translation strings "error.readPost.*" are now "error.read.*".
+
+  ~ Where'd all my semicolons go?
+
+  ! Certain emoji have a weird black spot in the top left corner for an unknown reason. I
+    probably just accidentally clicked up there with the spraypaint tool, will fix later.
+
 --  Alpha  0.10.1  --
 
   @ I need someone to do some testing in browsers other than just
     Safari and Chrome.
 
-  @ Most -.-.x will contain emojis, and as such they do not warrant another -.x.
+  @ Most -.-.x will contain emoji, and as such they do not warrant another -.x.
 
   @ The character encoding will not be switched to ASCII. Don't fix what ain't broken.
 
   + Added the halo, love, heart eyes, star-struck, kissy face, blowing a kiss, slow kiss,
-    happy kiss, mmm, tongue out, tongue wink, silly, mean face, and money mouth emojis.
+    happy kiss, mmm, tongue out, tongue wink, silly, mean face, and money mouth emoji.
 
   * The "happy" emoji is now more friendly looking.
+
+  * The help button has slightly rounded corners now.
 
   * The patch notes from version 0.10 now refer to the next *major* update.
 
   * The post list is now more rounded and has padding like before.
 
-  i Emojis are non-draggable again! Not sure how that happened.
+  i emoji are non-draggable again! Not sure how that happened.
 
-  i Emojis are now aligned properly to the bottom of the text.
+  i emoji are now aligned properly to the bottom of the text.
 
   i The patch note for fixing the header on the patch notes for 0.9.2 now
     correctly says 0.9.2, and not 0.9.3.
@@ -43,8 +164,7 @@ GUIDE TO BULLET POINTS (will always be in this order)
   @ I'm going to try to make more substantial releases from now on
     instead of quick series of many tiny releases.
 
-  + Postbox has a new, higher contrast look, and I made the CSS more D.R.Y! It looks
-    kind of retro-y now, maybe I'll incorporate that in the next major update.
+  + Postbox has a new, higher contrast look, and I made the CSS more D.R.Y!
 
   * Fixed the header on the Alpha 0.9.2 patch notes.
 
@@ -57,18 +177,18 @@ GUIDE TO BULLET POINTS (will always be in this order)
   @ Is it weird that for some reason whenever I draw a smiley I start
     to actually do whatever facial expression I'm drawing?
 
-  + Added a few, not nearly all, of the smiley emojis.
+  + Added a few, not nearly all, of the smiley emoji.
 
   + The patch notes from Alpha 0.9 include the part about version prefixes.
 
 --   Alpha 0.9.1   --
 
-  @ I haven't added normal people emojis yet, but I'll get on it when
+  @ I haven't added normal people emoji yet, but I'll get on it when
     GIMP stops causing me to lose brain cells.
 
   + Added a brand new Minecraft emoji set!
 
-  * Emojis have been reverted back to PNGs because I'm lazy, and they
+  * emoji have been reverted back to PNGs because I'm lazy, and they
     have to actually be PNGs, not just use the .png extension.
 
   * The Alpha 0.1 patch notes are now formatted correctly and accurately
@@ -76,7 +196,7 @@ GUIDE TO BULLET POINTS (will always be in this order)
 
 --    Alpha 0.9    --
 
-  - Removed all emojis for now, so that I can try to draw them well.
+  - Removed all emoji for now, so that I can try to draw them well.
 
   - Removed lots of unnecessary files that were supposed to be removed!
 
@@ -94,47 +214,47 @@ GUIDE TO BULLET POINTS (will always be in this order)
 
   @ How do I make it stop copying my JS files into the root directory?
 
-  + Add a few face emojis. Not all of them, just a few.
+  + Add a few face emoji. Not all of them, just a few.
 
   + Added the Alpha 0.7 changelog because apparently it didn't upload last time.
 
-  * Emojis are now GIFs. Not only does this allow animated emojis, but it also
+  * emoji are now GIFs. Not only does this allow animated emoji, but it also
     reduces their file size and allows for easier pixel art coloring. I haven't
-	converted all the existing emojis yet, but those will be available soon.
+	converted all the existing emoji yet, but those will be available soon.
 
   i Emoji hovernotes now include the :colons:.
 
-  i Emojis are no longer draggable.
+  i emoji are no longer draggable.
 
-  i Emojis are now 16x16 pixels so the Minecraft ones look nice.
+  i emoji are now 16x16 pixels so the Minecraft ones look nice.
 
-  i Emojis no longer have alt text, and will now only display the broken image icon.
+  i emoji no longer have alt text, and will now only display the broken image icon.
 
-  i The default emojis no longer ever have under_scores in their names, as
+  i The default emoji no longer ever have under_scores in their names, as
     _underscores_ are used in Markdown to italicize text.
 
-  ! Don't ask why the emojis aren't transparent yet. It's MS Paint.
+  ! Don't ask why the emoji aren't transparent yet. It's MS Paint.
 
 --    Alpha 0.7    --
 
-  + I added Minecraft emojis because Fortnite bad.
+  + I added Minecraft emoji because Fortnite bad.
 
   * Using an emoji will now show an image from the /emoji directory, like I said
     in Alpha 0.6.1. This is a big update, as it means I or anyone will be able to
-    add and remove emojis at will, but it's also a big responsibility because I
-    have to manually add all the emojis. (Oh no!) Emojis can be placed anywhere
+    add and remove emoji at will, but it's also a big responsibility because I
+    have to manually add all the emoji. (Oh no!) emoji can be placed anywhere
     within the emoji directory or any subdirectory and must be saved with the
     file extension .png, not necessarily PNG format but who cares?
 
 --   Alpha 0.6.1   --
 
-  + There is now a section in the markdown guide about emojis. It currently
-    only includes emojis beginning the letter A and the B emoji, but will be
-    expanded over time as I release more versions. At least 15 more emojis in
+  + There is now a section in the markdown guide about emoji. It currently
+    only includes emoji beginning the letter A and the B emoji, but will be
+    expanded over time as I release more versions. At least 15 more emoji in
     the table per release until they're all included.
 
   ? Going to modify showdown.js so that it will display images from the /emoji
-    folder instead of actual emojis, then it will look nice on all fonts. :smile:
+    folder instead of actual emoji, then it will look nice on all fonts. :smile:
 
 --    Alpha 0.6    --
 
@@ -175,7 +295,7 @@ GUIDE TO BULLET POINTS (will always be in this order)
   ? Planning to add events (programming events, not social events) to Postbox.
 
   ? Probably going to change the post title and content to use ASCII, since you
-    can use GitHub emojis on Postbox now.
+    can use GitHub emoji on Postbox now.
 
   ! I am aware that Markdown allows you to use any URL for a link including
     JavaScript execution and that this is a security issue.
@@ -210,7 +330,7 @@ GUIDE TO BULLET POINTS (will always be in this order)
   - Removed the old duplicate changelog.txt from Postbox Web Interface.
     Not sure how it got there.
 
-  + Postbox's Showdown configuration now has emojis enabled.
+  + Postbox's Showdown configuration now has emoji enabled.
 
   + There are now announcements in the changelog.
 

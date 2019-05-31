@@ -1,3 +1,7 @@
+::selection {
+	background: papayaWhip;
+}
+
 * {
 	image-rendering: pixelated;
 }
@@ -25,12 +29,14 @@ button {
 	line-height: 1.1;
 	outline: none;
 	padding: 4px;
+	transition: 0.2s box-shadow ease-out;
 	-webkit-user-select: none;
 	white-space: pre;
 }
 
 button:active {
 	box-shadow: 0 0 0 1px #e8e8e8 inset, -2px -2px #e8e8e8 inset, 2px 2px #202224 inset, -4px -4px #e8e8e8 inset, 3px 3px #202224 inset;
+	transition: 0.1s box-shadow ease-in;
 }
 
 button:disabled {
@@ -38,13 +44,37 @@ button:disabled {
 }
 
 button::selection, h1::selection, h2::selection, h3::selection, h4::selection, h5::selection, h6::selection, .points::selection, .post > legend > date::selection, .vote::selection, #help-button::selection {
+	background: transparent;
 }
 
 h1, h2, h3, h4, h5, h6 {
 	cursor: default;
 	font-family: Courier, Courier New, monospace;
 	margin: 0.5% 0;
-	-webkit-user-select: none;
+}
+
+h1 {
+	font-size: 250%;
+}
+
+h2 {
+	font-size: 225%;
+}
+
+h3 {
+	font-size: 200%
+}
+
+h4 {
+	font-size: 175%
+}
+
+h5 {
+	font-size: 150%
+}
+
+h6 {
+	font-size: 125%
 }
 
 hr {
@@ -182,7 +212,9 @@ input::placeholder, textarea::placeholder {
 }
 
 #branding-or-whatever {
-	margin-bottom: 1.25ch;
+	font-size: 300%;
+	margin: 0;
+	opacity: 0.75;
 }
 
 #gui {
@@ -198,6 +230,7 @@ input::placeholder, textarea::placeholder {
 
 #help-button {
 	background: white;
+	border-radius: 0.125ch;
 	color: navy;
 	cursor: pointer;
 	display: block;
@@ -208,19 +241,19 @@ input::placeholder, textarea::placeholder {
 	right: -10px;
 	text-align: center;
 	top: -10px;
-	transform: rotate(0.02turn);
+	transform: scale(1.125) rotate(0.02turn);
 	transition: 0.5s transform ease-in;
 	-webkit-user-select: none;
 	width: 64px;
 }
 
 #help-button:hover {
-	transform: rotate(1.02turn);
+	transform: scale(1.25) rotate(1.02turn);
 }
 
 #help-button:active {
-	transform: rotate(0.99turn);
-	transition: 0.125s transform ease-in;
+	transform: scale(0.875) rotate(0.99turn);
+	transition: 0.2s transform ease-in;
 }
 
 #inputtitle, #inputcontent {
