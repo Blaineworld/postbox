@@ -67,7 +67,6 @@ function renderPosts() {
 		} catch(error) {
 		}
 	p.sort(sortFunction);
-	console.log(p);
 
 	for (var i = 0; i < p.length; i++) {
 		render(p[i]);

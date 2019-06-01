@@ -24,7 +24,7 @@ translate.register({
 
 {
 	/* # Configurations */
-	let gaeFurry = true; // Unless you're authorized to do this.
+	let gaeFurry = false; // Unless you're authorized to do this.
 
 	let postBodyMin = 40; // Smallest number of characters posts can have.
 	let postBodyMax = 960; // Largest number of characters posts can have.

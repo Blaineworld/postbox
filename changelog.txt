@@ -9,6 +9,16 @@ GUIDE TO BULLET POINTS (will always be in this order)
   ? w.i.p/planned feature
   ! known bug
 
+--   Alpha  1.2b   --
+
+  * You can now see the text selection on headings.
+
+  i Admin mode is once again off by default.
+
+  i Removed a console.log.
+
+  i You can't select post dates anymore.
+
 --    Alpha 1.2    --
 
   - You can no longer fall off the edge of the manual because iT's

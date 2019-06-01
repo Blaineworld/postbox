@@ -57,8 +57,12 @@ button:disabled {
 	padding: 4px;
 }
 
-button::selection, h1::selection, h2::selection, h3::selection, h4::selection, h5::selection, h6::selection, .points::selection, .post > legend > date::selection, .vote::selection, #help-button::selection {
+button::selection, .points::selection, .post > legend > .date::selection, .vote::selection, #help-button::selection {
 	background: transparent;
+}
+
+h1::selection, h2::selection, h3::selection, h4::selection, h5::selection, h6::selection {
+	background: #ffefd580;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -229,6 +233,10 @@ input::placeholder, textarea::placeholder {
 	font-size: 300%;
 	margin: 0;
 	opacity: 0.75;
+}
+
+#branding-or-whatever::selection {
+	background: transparent;
 }
 
 #gui {
