@@ -24,6 +24,8 @@ GUIDE TO BULLET POINTS (will always be in this order)
 
   * The version number is now less distracting and uses a serif font.
 
+  * Version names are now entirely lowercase.
+
   i Posts are now actually sorted.
 
   i The version number is now unselectable and has no animation.

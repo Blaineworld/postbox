@@ -316,7 +316,7 @@ translate.register({
 	};
 
 	const methodVersion = function() {
-		return "Alpha 1.1.2";
+		return "alpha 1.2b";
 	};
 
 	const methodVoteCooldown = function() {
