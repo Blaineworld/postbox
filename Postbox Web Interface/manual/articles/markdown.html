@@ -10,11 +10,12 @@
 			<a href="#escape-sequences">Escape Sequences</a> /
 			<a href="#typographical-features">Typographical Structures</a> /
 			<a href="#styles">Styles</a> /
-			<a href="#emoji">emoji</a>
+			<a href="#emoji">Emoji</a> /
+			<a href="#character-entities">Using Special Characters</a>
 		</div>
 		<hr></hr>
 		<small>Markdown is a markup language initially created by John Gruber and used on many sites. Of course, you don't really care and just want to see the tutorial, so here it is...</small>
-		<small>Please note that although Markdown normally supports HTML tags, Postbox Markdown does not allow you to use HTML tags for security reasons. Someone could add a &lt;script&gt; tag!</small>
+		<small>Please note that although Markdown normally supports HTML tags, Postbox Markdown does not allow you to use HTML tags for security reasons. Someone could add a &lt;script&gt; tag! But you can use <a href="#character-entities">character entities</a>.</small>
 		<h3 id="escape-sequences">Escape Sequences</h3>
 		<p>In programming, an escape sequence is a sequence of characters that changes the meaning of a character to something else. A typical example of this is a string in "quotation marks" where you want to have a quotation mark in the string, so you use <code>\"</code> to tell the computer that the quotation mark is just a quotation mark and isn't the end of the string. The same thing applies in Markdown, too. You can use a <code title="backslash">\</code> to say that a character is just a character and doesn't mean anything else. For example, you might need a # in a heading, so instead of <code># # My Heading</code>, which results in a level two heading saying <i>My Heading</i>, you use <code># \# My Heading</code> so that the # is treated as just part of the text. These can be used on pretty much anything that uses a character to represent a style.</p>
 		<hr></hr>
@@ -433,6 +434,34 @@ so I use less characters.</code></pre></td>
 						<td>
 							<img src="../../emoji/rofl.png" type="image/png" title=":rofl:" alt="​"></img> <b>HAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHA<i>HA!</i></b>
 						</td>
+					</tr>
+				</tbody>
+			</table>
+		</details>
+		<h3 id="character-entities">Using Special Characters</h2>
+		<p>Even though Postbox only supports ASCII characters (meaning the first 256 Unicode characters), you can still insert special characters using HTML character entities. This does not mean you can use HTML tags, that would be an XSS vulnerability. (It's fine if you don't know what any of that means.) To create an HTML character entity, simply add in <code>&amp;<i>name</i>;</code>, <code>&amp;#<i>dec</i>;</code>, or <code>&amp;#x<i>hex</i>;</code>, where <i>name</i> is the name of the character, <i>dec</i> is the character code in decimal, and <i>hex</i> is the character code in hexadecimal. (It's okay if you don't know what hexadecimal is.) <code>&amp;sect;</code> is the same as <code>&amp;#167;</code> is the same as <code>&amp;#xA7;</code>; they're all &sect;. <b>A pretty extensive list of character entities can be found <a href="https://www.freeformatter.com/html-entities.html">here</a>.</b></p>
+		<details>
+			<summary>Visual Example</summary>
+			<table>
+				<thead>
+					<tr>
+						<th>Markdown</th>
+						<th>Result</th>
+						
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><code>Love you! &amp;hearts;</code></td>
+						<td>Love you! &hearts;</td>
+					</tr>
+					<tr>
+						<td><code>&amp;#xA9; YourMom.Com</code></td>
+						<td>&#xA9; YourMom.Com</td>
+					</tr>
+					<tr>
+						<td><code>That'll be 80&amp;#162;.</code></td>
+						<td>That'll be 80&#162;.</td>
 					</tr>
 				</tbody>
 			</table>

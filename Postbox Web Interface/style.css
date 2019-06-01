@@ -324,21 +324,15 @@ input::placeholder, textarea::placeholder {
 #version {
 	bottom: 1vh;
 	color: white;
+	cursor: default;
+	font-family: Georgia, Times, sans-serif;
 	font-size: 120%;
 	left: 1vw;
-	opacity: 0.75;
+	opacity: 0.5;
 	position: absolute;
 	transition: 2s ease-out;
 	transition-property: color, opacity;
 	-webkit-user-select: none;
-}
-
-#version:hover {
-	opacity: 1;
-}
-
-#version:active {
-	color: silver;
 }
 
 #version::selection {

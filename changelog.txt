@@ -9,6 +9,27 @@ GUIDE TO BULLET POINTS (will always be in this order)
   ? w.i.p/planned feature
   ! known bug
 
+--    Alpha 1.2    --
+
+  - You can no longer fall off the edge of the manual because iT's
+    A sAfEtY hAzArD.
+
+  + New method: Postbox.getVoteInfluence().
+
+  + New property: <post>.age
+
+  + The Markdown guide now includes a section on HTML character entities.
+
+  * Posts are now sorted using a "smarter" algorithm.
+
+  * The version number is now less distracting and uses a serif font.
+
+  i Posts are now actually sorted.
+
+  i The version number is now unselectable and has no animation.
+
+  i The vote buttons no longer use the interactive cursor when unavailable.
+
 --   Alpha 1.1.2   --
 
   + The post creation GUI now has a quicker, smoother AND nicer animation!

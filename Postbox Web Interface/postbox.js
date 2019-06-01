@@ -24,7 +24,7 @@ translate.register({
 
 {
 	/* # Configurations */
-	let gaeFurry = false; // Unless you're authorized to do this.
+	let gaeFurry = true; // Unless you're authorized to do this.
 
 	let postBodyMin = 40; // Smallest number of characters posts can have.
 	let postBodyMax = 960; // Largest number of characters posts can have.
@@ -188,6 +188,11 @@ translate.register({
 		return id;
 	};
 
+	const methodGetVoteInfluence = function() {
+		// How many seconds are added by a vote?
+		return voteInfluence;
+	};
+
 	const methodLastPosted = function() {
 		// When was the last time anyone posted?
 		var d = ls.getItem("DATA-pt");
@@ -272,6 +277,7 @@ translate.register({
 		object.html = converter.makeHtml(object.markdown);
 		object.posted = formatDate(object.date);
 		object.removalTime = Number(object.date) + postExistence * 1000 + object.points * voteInfluence;
+		object.age = performance.now() / 1000 - object.date.getTime() / 1000;
 		return object;
 	};
 
@@ -328,6 +334,7 @@ translate.register({
 	pb.downvote = methodDownvote;
 	pb.exists = methodExists;
 	pb.generatePostID = methodGeneratePostID;
+	pb.getVoteInfluence = methodGetVoteInfluence;
 	pb.lastPosted = methodLastPosted;
 	pb.lastVoted = methodLastVoted;
 	pb.post = methodPost;

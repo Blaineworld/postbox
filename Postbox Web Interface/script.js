@@ -3,6 +3,8 @@ var titleSize = Postbox.titleSize(), bodySize = Postbox.bodySize();
 inputtitle.placeholder = translate("ui.placeholder.title", inputtitle.minLength = titleSize.min, inputtitle.maxLength = titleSize.max);
 inputcontent.placeholder = translate("ui.placeholder.content", inputcontent.minLength = bodySize.min, inputcontent.maxLength = bodySize.max);
 
+var vI = Postbox.getVoteInfluence();
+
 var noVoteStyles = document.querySelector("#no-vote-styles");
 setTimeout(disableNoVoteStyles, Postbox.voteCooldown() * 1000);
 
@@ -40,10 +42,13 @@ function pm(n) {
 }
 
 Postbox.removeExpiredPosts();
-setInterval(Postbox.removeExpiredPosts, 300000); // Remove old posts every ~5 minutes.
+setInterval(function() {
+	Postbox.removeExpiredPosts();
+	renderPosts();
+}, 300000); // Remove old posts every ~5 minutes.
 
 function sortFunction(a, b) {
-	return (a.date - b.date) + ((a.points - b.points) * 75000);
+	return (b.age - a.age) - ((b.points * vI * 2) - (a.points * vI * 2));
 }
 
 function disableNoVoteStyles() {
@@ -61,11 +66,12 @@ function renderPosts() {
 			p.push(Postbox.read(ids[i]));
 		} catch(error) {
 		}
+	p.sort(sortFunction);
+	console.log(p);
 
 	for (var i = 0; i < p.length; i++) {
 		render(p[i]);
 	}
-	p.sort(sortFunction);
 }
 
 renderPosts();
