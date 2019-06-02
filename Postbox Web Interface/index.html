@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Postbox</title>
+		<title>Postbox </title>
 		<link rel="stylesheet" href="style.css" />
 		<link rel="stylesheet" href="stylesheet.css" />
 		<style id="no-vote-styles">
@@ -13,6 +13,11 @@
 	text-shadow: 0 0 transparent;
 }
 		</style>
+		<style id="bigemoji">
+.emoji {
+	height: 32px;
+}
+		</style>
 		<script language "Javascript" src="compat.js"></script>
 	</head>
 	<body>
@@ -20,7 +25,10 @@
 		<div id="help-button" title="View Manual" onclick="if(!help.src.replace('about:blank','')){this.innerText='↺';this.title='Back to Postbox!';this.style.color='maroon';help.style.transform='none';help.src='manual/index.html'}else{this.innerText='?';this.title='View Manual';this.style.color='';help.style.transform=''}">?</div>
 		<div id="posts"></div>
 		<div id="gui">
-			<button onclick="writegui.style.transform='none'" style="position:absolute;bottom:1vh;right:1vw;font-size:200%" title="Put up something new.">  <b>+</b> Create  </button>
+			<div id="gui-br">
+				<button onclick="bigemoji.disabled=!bigemoji.disabled" title="Toggle Big Emoji">BE</button>
+				<button onclick="writegui.style.transform='none'" title="Put up something new.">  <b>+</b> Create  </button>
+			</div>
 			<a id="version"></a>
 		</div>
 		<div id="writegui">

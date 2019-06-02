@@ -9,6 +9,35 @@ GUIDE TO BULLET POINTS (will always be in this order)
   ? w.i.p/planned feature
   ! known bug
 
+--    Alpha 1.3    --
+
+  + Added a button to toggle Big Emoji.
+
+  + Added the emoji Smirking Face, Grimacing Face, Lying Face, and
+    Face With Rolling Eyes because I forgot them before.
+
+  + Added the emoji Face With Medical Mask through Exploding Head. (That's 13 total.)
+
+  + The sorting algorithm is now inside the engine via the new Postbox.sort().
+
+  + The sorting function can now be accessed via Postbox.sort.SORT_FUNCTION.
+
+  * Fixed an indentation mistake on Alpha 0.8's patch notes.
+
+  * Heading selection is now visible.
+
+  * The half smile emoji is now less like a smirk.
+
+  * The sleeping emoji isn't hiding a DS under the pillow anymore.
+
+  * The sleepy emoji is now even sleepier.
+
+  * The :sorrow: emoji is now the :sorrowful: emoji.
+
+  * Votes now matter 4x as much to the sorting algorithm.
+
+  ~ Showing the version is now the first thing the web UI script does.
+
 --   Alpha  1.2b   --
 
   * You can now see the text selection on headings.
@@ -349,7 +378,7 @@ GUIDE TO BULLET POINTS (will always be in this order)
 
   * emoji are now GIFs. Not only does this allow animated emoji, but it also
     reduces their file size and allows for easier pixel art coloring. I haven't
-	converted all the existing emoji yet, but those will be available soon.
+    converted all the existing emoji yet, but those will be available soon.
 
   i Emoji hovernotes now include the :colons:.
 

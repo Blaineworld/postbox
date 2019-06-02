@@ -281,6 +281,18 @@ translate.register({
 		return object;
 	};
 
+	const methodSort = function(list) {
+		list.sort(methodSort.SORT_FUNCTION);
+		return list;
+	};
+	methodSort.SORT_FUNCTION = function youCanChangeThis(a, b) {
+		try {
+			return (b.age - a.age) - ((b.points * voteInfluence * 8) - (a.points * voteInfluence * 8));
+		} catch(error) {
+			return -Infinity;
+		}
+	};
+
 	const methodRemoveExpiredPosts = function() {
 		// Remove all expired posts, and return the number removed.
 		var removed = 0, end = 0, object, i = 0, k;
@@ -316,7 +328,7 @@ translate.register({
 	};
 
 	const methodVersion = function() {
-		return "alpha 1.2b";
+		return "alpha 1.3";
 	};
 
 	const methodVoteCooldown = function() {
@@ -340,6 +352,7 @@ translate.register({
 	pb.post = methodPost;
 	pb.removeExpiredPosts = methodRemoveExpiredPosts;
 	pb.read = methodRead;
+	pb.sort = methodSort;
 	pb.titleSize = methodTitleSize;
 	pb.upvote = methodUpvote;
 	pb.version = methodVersion;

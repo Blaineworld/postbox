@@ -62,7 +62,7 @@ button::selection, .points::selection, .post > legend > .date::selection, .vote:
 }
 
 h1::selection, h2::selection, h3::selection, h4::selection, h5::selection, h6::selection {
-	background: #ffefd580;
+	background: #ffefd53c;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -148,7 +148,6 @@ input::placeholder, textarea::placeholder {
 }
 
 .emoji {
-	height: 16px;
 	vertical-align: middle;
 }
 
@@ -248,6 +247,16 @@ input::placeholder, textarea::placeholder {
 	padding: 0.25ch;
 	position: absolute;
 	right: 0;
+}
+
+#gui-br {
+	position: absolute;
+	bottom: 1vh;
+	right: 1vw;
+}
+
+#gui-br button {
+	font-size: 200%;
 }
 
 #help-button {
