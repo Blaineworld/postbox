@@ -26,13 +26,15 @@ GUIDE TO BULLET POINTS (will always be in this order)
 
   * Heading selection is now visible.
 
+  * Renamed :sorrow: to :sorrowful:.
+
   * The half smile emoji is now less like a smirk.
 
   * The sleeping emoji isn't hiding a DS under the pillow anymore.
 
   * The sleepy emoji is now even sleepier.
 
-  * The :sorrow: emoji is now the :sorrowful: emoji.
+  * The version number is now visible in the window title.
 
   * Votes now matter 4x as much to the sorting algorithm.
 
