@@ -28,7 +28,7 @@ translate.register({
 
 	let postBodyMin = 40; // Smallest number of characters posts can have.
 	let postBodyMax = 960; // Largest number of characters posts can have.
-	let postCooldown = 900; // The wait period for posting in seconds.
+	let postCooldown = 1200; // The wait period for posting in seconds.
 	let postExistence = 86400; // Base post existence in seconds.
 	let postIDLength = 2; // The number of characters to use in a post ID.
 	let postTitleMin = 12; // Smallest number of characters titles can have.
@@ -36,7 +36,7 @@ translate.register({
 
 	let upvoteSelf = true; // Whether posts should automatically be upvoted.
 
-	let voteCooldown = 300; // The wait period for voting in seconds.
+	let voteCooldown = 360; // The wait period for voting in seconds.
 	let voteInfluence = 150; // Number of seconds added per vote.
 
 	let reverseSandboxStorage = true; // Hide storage from the outside world.
@@ -45,11 +45,13 @@ translate.register({
 	const NULL = String.fromCharCode(0);
 
 	/* # Declarations */
-	let converter = new showdown.Converter();
-	converter.setOption("emoji", true);
-	converter.setOption("parseImageDimension", true);
-	converter.setOption("tables", true);
-	converter.setOption("backslashEscapesHTMLTags", true);
+	let converter = new showdown.Converter({
+		"tables": true,
+		"parseImageDimensions": true,
+		"omitExtraWLInCodeBlocks": true,
+		"emoji": true,
+		"backslashEscapesHTMLTags": true
+	});
 	const ls = localStorage;
 	let rn = new Date(); // If you don't know what it stands for Google it.
 
@@ -328,7 +330,7 @@ translate.register({
 	};
 
 	const methodVersion = function() {
-		return "alpha 1.3";
+		return "alpha 1.4";
 	};
 
 	const methodVoteCooldown = function() {

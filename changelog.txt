@@ -9,6 +9,37 @@ GUIDE TO BULLET POINTS (will always be in this order)
   ? w.i.p/planned feature
   ! known bug
 
+--    Alpha 1.4    --
+
+  + Added the emoji Cowboy Hat Face through Angry Face With Horns. You should be excited,
+    because that means the next update will be adding Pile of Poo!
+
+  + The Toggle Emoji Size button now actually conveys what it does visually!
+
+  * All UI buttons have been recolored to make them stand out more. Yes, all... three...
+
+  * Big Emoji is now more dynamic.
+
+  * Buttons are now  E X T R A   L A R G E .
+
+  * Buttons can now be easily recolored.
+
+  * Buttons now have a softer look.
+
+  * Changed a few Showdown options.
+
+  * Once again rewrote the hovernotes on various things.
+
+  * The cooldowns for posting and voting have been increased to 20:00 and 6:00 respectively.
+
+  * The Markdown guide now uses a <code> tag when it refers to the <script> tag.
+
+  i The manual no longer erroneously states that titles are optional.
+
+  ? Considering adding the ability to edit posts using a password. Probably won't happen.
+
+  ? Should native emoji be automatically converted to the Postbox ones?
+
 --    Alpha 1.3    --
 
   + Added a button to toggle Big Emoji.

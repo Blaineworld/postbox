@@ -15,30 +15,30 @@
 		</style>
 		<style id="bigemoji">
 .emoji {
-	height: 32px;
+	min-height: 32px;
 }
 		</style>
 		<script language "Javascript" src="compat.js"></script>
 	</head>
 	<body>
 		<h1 id="branding-or-whatever" title="ˢᵉᶜʳᵉᵗ ᵐᵉˢˢᵃᵍᵉ ᵈᵒⁿ'ᵗ ᵗᵉˡˡ ᵃⁿʸᵒⁿᵉ">Postbox</h1>
-		<div id="help-button" title="View Manual" onclick="if(!help.src.replace('about:blank','')){this.innerText='↺';this.title='Back to Postbox!';this.style.color='maroon';help.style.transform='none';help.src='manual/index.html'}else{this.innerText='?';this.title='View Manual';this.style.color='';help.style.transform=''}">?</div>
+		<div id="help-button" title="View the manual!" onclick="if(!help.src.replace('about:blank','')){this.innerText='↺';this.title='Back to Postbox!';this.style.color='maroon';help.style.transform='none';help.src='manual/index.html'}else{this.innerText='?';this.title='View the manual!';this.style.color='';help.style.transform=''}">?</div>
 		<div id="posts"></div>
 		<div id="gui">
 			<div id="gui-br">
-				<button onclick="bigemoji.disabled=!bigemoji.disabled" title="Toggle Big Emoji">BE</button>
-				<button onclick="writegui.style.transform='none'" title="Put up something new.">  <b>+</b> Create  </button>
+				<button style="background:#fe8;color:#742;width:3ch" onclick="if(bigemoji.disabled=!bigemoji.disabled)this.innerHTML=':)';else this.innerHTML='<b>:D</b>'" title="Toggle Emoji Size">:)</button>
+				<button style="background:#afc;color:#102" onclick="writegui.style.transform='none'" title="Create a new post!">  <b>+</b> Create  </button>
 			</div>
-			<a id="version"></a>
+			<a id="version" title="Postbox Version"></a>
 		</div>
 		<div id="writegui">
-			<button onclick="writegui.style.transform='';nope.innerText=inputtitle.value=inputcontent.value=''" title="Nevermind" id="cancelbutton"><b>X</b></button>
+			<button style="background:#c14;color:#fec" onclick="writegui.style.transform='';nope.innerText=inputtitle.value=inputcontent.value=''" title="Close & Discard Post" id="cancelbutton"><b>X</b></button>
 			<span id="nope"></span>
 			<br></br>
-			<input type="text" placeholder="Untitled" id="inputtitle" title="Post Title Box"></textarea>
+			<input type="text" placeholder="Untitled" id="inputtitle" title="Write a title for your post."></textarea>
 			<hr></hr>
-			<textarea placeholder="Content" id="inputcontent" title="Post Body Text Box"></textarea>
-			<button style="top: 1.25vh;right:3vw;position:fixed" onclick="try{render(Postbox.read(Postbox(inputcontent.value,inputtitle.value)));renderPosts();noVoteStyles.disabled=false;setTimeout(disableNoVoteStyles,Postbox.voteCooldown()*1000);cancelbutton.click()}catch(error){nope.innerText=error;throw error}"><b>PUT IT UP!</b></button>
+			<textarea placeholder="Content" id="inputcontent" title="Write your post here."></textarea>
+			<button style="top:1.25vh;right:3vw;position:fixed;background:#afc;color:#102" onclick="try{render(Postbox.read(Postbox(inputcontent.value,inputtitle.value)));renderPosts();noVoteStyles.disabled=false;setTimeout(disableNoVoteStyles,Postbox.voteCooldown()*1000);cancelbutton.click()}catch(error){nope.innerText=error;throw error}" title="Publish Your Post"><b>PUT IT UP!</b></button>
 		</div>
 		<iframe id="help"></iframe>
 		<script language "Javascript" src="showdown.js"></script>
