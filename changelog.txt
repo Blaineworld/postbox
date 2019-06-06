@@ -10,6 +10,27 @@ GUIDE TO BULLET POINTS (will always be in this order)
   / cancelled/postponed
   ! known bug
 
+--    Alpha 1.5    --
+
+  + Added a new original emoji, :uwu:!
+
+  + Added the emoji Grinning Cat Face through Pouting Cat Face.
+
+  + The Markdown guide section on emoji now includes a smiling cat example.
+
+  * Made some small tweaks to the :poo: emoji.
+
+  * The base post existence is now in minutes instead of seconds.
+
+  * The default base post existence has been increased by half a day.
+
+  * The :ghost: emoji is now less ugly.
+
+  * The :goblin: emoji is temporarily going to be a Terraria goblin until I redraw
+    it, because the old one was actually a gnome, not a gnoblin.
+
+  i Actually changed the version number... again...
+
 --   Alpha 1.4.1   --
 
   + Added a bullet point for cancelled or postponed features.

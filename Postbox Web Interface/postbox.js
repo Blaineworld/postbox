@@ -29,7 +29,7 @@ translate.register({
 	let postBodyMin = 40; // Smallest number of characters posts can have.
 	let postBodyMax = 960; // Largest number of characters posts can have.
 	let postCooldown = 1200; // The wait period for posting in seconds.
-	let postExistence = 86400; // Base post existence in seconds.
+	let postExistence = 2160; // Base post existence in minutes.
 	let postIDLength = 2; // The number of characters to use in a post ID.
 	let postTitleMin = 12; // Smallest number of characters titles can have.
 	let postTitleMax = 60; // Largest number of characters titles can have.
@@ -278,7 +278,7 @@ translate.register({
 		}
 		object.html = converter.makeHtml(object.markdown);
 		object.posted = formatDate(object.date);
-		object.removalTime = Number(object.date) + postExistence * 1000 + object.points * voteInfluence;
+		object.removalTime = Number(object.date) + postExistence * 60000 + object.points * voteInfluence;
 		object.age = performance.now() / 1000 - object.date.getTime() / 1000;
 		return object;
 	};
@@ -302,7 +302,7 @@ translate.register({
 			if ((k = ls.key(i)).substring(0, 5) === "POST-")
 				try {
 					object = methodRead(k.replace("POST-", ""));
-					end = Number(object.date) + postExistence * 1000 + object.points * voteInfluence;
+					end = Number(object.date) + postExistence * 60000 + object.points * voteInfluence;
 					if (end < Date.now())
 						ls.removeItem(k);
 				} catch(error) {
@@ -330,7 +330,7 @@ translate.register({
 	};
 
 	const methodVersion = function() {
-		return "alpha 1.4";
+		return "alpha 1.5";
 	};
 
 	const methodVoteCooldown = function() {
