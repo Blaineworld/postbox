@@ -59,7 +59,7 @@ button:disabled {
 }
 
 button::selection, .points::selection, .post > legend > .date::selection, .vote::selection, #help-button::selection {
-	background: transparent;
+	background: none;
 }
 
 h1::selection, h2::selection, h3::selection, h4::selection, h5::selection, h6::selection {
@@ -236,7 +236,7 @@ input::placeholder, textarea::placeholder {
 }
 
 #branding-or-whatever::selection {
-	background: transparent;
+	background: none;
 }
 
 #gui {
@@ -254,6 +254,11 @@ input::placeholder, textarea::placeholder {
 	position: absolute;
 	bottom: 1vh;
 	right: 1vw;
+	-webkit-user-select: none;
+}
+
+#gui-br::selection {
+	background: none;
 }
 
 #gui-br button {

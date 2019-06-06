@@ -5,9 +5,23 @@ GUIDE TO BULLET POINTS (will always be in this order)
   + added something
   * changed something
   i bug fix
-  ~ logical change
+  ~ internal change
   ? w.i.p/planned feature
+  / cancelled/postponed
   ! known bug
+
+--   Alpha 1.4.1   --
+
+  + Added a bullet point for cancelled or postponed features.
+
+  + Added the emoji Skull through Robot Face. (That includes Pile of Poo!)
+    I think my favorite emoji so far is :ogre:...
+
+  * Logical change is now internal change.
+
+  ~ All selection styles with transparency backgrounds now have no background.
+
+  i You can no longer select the space between UI buttons.
 
 --    Alpha 1.4    --
 
