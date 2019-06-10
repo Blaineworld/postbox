@@ -1,13 +1,13 @@
-document.querySelector("title").innerText += (version.innerText = Postbox.version());
+document.querySelector("title").innerText += (version.innerText = Postbox.version);
 bigemoji.disabled = true;
 
-var titleSize = Postbox.titleSize(), bodySize = Postbox.bodySize();
+var titleSize = Postbox.titleSize, bodySize = Postbox.bodySize;
 
 inputtitle.placeholder = translate("ui.placeholder.title", inputtitle.minLength = titleSize.min, inputtitle.maxLength = titleSize.max);
 inputcontent.placeholder = translate("ui.placeholder.content", inputcontent.minLength = bodySize.min, inputcontent.maxLength = bodySize.max);
 
 var noVoteStyles = document.querySelector("#no-vote-styles");
-setTimeout(disableNoVoteStyles, Postbox.voteCooldown() * 1000);
+setTimeout(disableNoVoteStyles, Postbox.voteCooldown * 1000);
 
 function helpTransitionEnd() {
 	if (this.style.transform !== "none")
@@ -77,7 +77,7 @@ addEventListener("click", function(event) {
 			console.info("Copied!");
 		}
 	} else {
-		if (event.target.className.replace("down", "up") === "vote-up" && !Postbox.voteCooldown()) {
+		if (event.target.className.replace("down", "up") === "vote-up" && !Postbox.voteCooldown) {
 			if (event.target.className === "vote-down") {
 				Postbox.downvote(event.target.parentElement.parentElement.parentElement.querySelector("#post-id").innerText);
 				event.target.parentElement.querySelector("#points").innerText--;
@@ -87,7 +87,7 @@ addEventListener("click", function(event) {
 			}
 			renderPosts();
 			noVoteStyles.disabled = false;
-			setTimeout(disableNoVoteStyles, Postbox.voteCooldown() * 1000);
+			setTimeout(disableNoVoteStyles, Postbox.voteCooldown * 1000);
 		}
 	}
 });

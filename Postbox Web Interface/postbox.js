@@ -24,7 +24,7 @@ translate.register({
 
 {
 	/* # Configurations */
-	let gaeFurry = false; // Unless you're authorized to do this.
+	let furtard = false; // Unless you're authorized to do this.
 
 	let postBodyMin = 40; // Smallest number of characters posts can have.
 	let postBodyMax = 960; // Largest number of characters posts can have.
@@ -37,7 +37,7 @@ translate.register({
 	let upvoteSelf = true; // Whether posts should automatically be upvoted.
 
 	let voteCooldown = 360; // The wait period for voting in seconds.
-	let voteInfluence = 150; // Number of seconds added per vote.
+	let voteInfluence = 240; // Number of seconds added per vote.
 
 	let reverseSandboxStorage = true; // Hide storage from the outside world.
 
@@ -167,7 +167,7 @@ translate.register({
 
 	const methodDownvote = function(id) {
 		// Decrease a post's score by one point.
-		var object = methodRead(id), cooldown = methodVoteCooldown();
+		var object = methodRead(id), cooldown = propVoteCooldown();
 		if (cooldown)
 			throw translate("error.cooldown", formatTime(cooldown * 1000));
 		ls.setItem("DATA-vt", Date.now().toString(36));
@@ -195,25 +195,9 @@ translate.register({
 		return voteInfluence;
 	};
 
-	const methodLastPosted = function() {
-		// When was the last time anyone posted?
-		var d = ls.getItem("DATA-pt");
-		if (!d)
-			return null;
-		return new Date(parseInt(d, 36));
-	};
-
-	const methodLastVoted = function() {
-		// When was the last time anyone voted?
-		var d = ls.getItem("DATA-vt");
-		if (!d)
-			return null;
-		return new Date(parseInt(d, 36));
-	};
-
 	const methodPost = function(bodyText, titleText = "") {
 		// Create a post on Postbox!
-		var content = String(bodyText), title = String(titleText), id = methodGeneratePostID(), cooldown = methodPostCooldown();
+		var content = String(bodyText), title = String(titleText), id = methodGeneratePostID(), cooldown = propPostCooldown();
 		if (content.length < postBodyMin)
 			throw translate("error.post.tooShort", content.length, postBodyMin);
 		if (content.length > postBodyMax)
@@ -234,11 +218,6 @@ translate.register({
 		if (upvoteSelf)
 			ls.setItem("DATA-vt", Date.now().toString(36));
 		return id;
-	};
-
-	const methodPostCooldown = function() {
-		// How many seconds until I can post again?
-		return (Math.max(0, postCooldown * 1000 - (Date.now() - parseInt(ls.getItem("DATA-pt") || "0", 36))) || 0) / 1000;
 	};
 
 	const methodRead = function(id) {
@@ -310,17 +289,9 @@ translate.register({
 		return removed;
 	};
 
-	const methodTitleSize = function() {
-		// How long can and should my title be?
-		return {
-			"min": postTitleMin,
-			"max": postTitleMax
-		};
-	};
-
 	const methodUpvote = function(id) {
 		// Increase a post's score by one point.
-		var object = methodRead(id), cooldown = methodVoteCooldown();
+		var object = methodRead(id), cooldown = propVoteCooldown();
 		if (cooldown)
 			throw translate("error.cooldown", formatTime(cooldown * 1000));
 		ls.setItem("DATA-vt", Date.now().toString(36));
@@ -329,36 +300,111 @@ translate.register({
 		return object.points;
 	};
 
-	const methodVersion = function() {
-		return "alpha 1.5";
+	let probjBodySize = {};
+
+	const propBodySize = function() {
+		// How long can and should my post be?
+		if (probjBodySize.min !== postBodyMin || probjBodySize.max !== postSizeMax)
+			return probjBodySize = {
+				"min": postBodyMin,
+				"max": postBodyMax
+			};
+		return probjTitleSize;
 	};
 
-	const methodVoteCooldown = function() {
+	const propLastPosted = function() {
+		// When was the last time anyone posted?
+		var d = ls.getItem("DATA-pt");
+		if (!d)
+			return null;
+		return new Date(parseInt(d, 36));
+	};
+
+	const propLastVoted = function() {
+		// When was the last time anyone voted?
+		var d = ls.getItem("DATA-vt");
+		if (!d)
+			return null;
+		return new Date(parseInt(d, 36));
+	};
+
+	const propPostCooldown = function() {
+		// How many seconds until I can post again?
+		return (Math.max(0, postCooldown * 1000 - (Date.now() - parseInt(ls.getItem("DATA-pt") || "0", 36))) || 0) / 1000;
+	};
+
+	let probjTitleSize = {};
+
+	const propTitleSize = function() {
+		// How long can and should my title be?
+		if (probjTitleSize.min !== postTitleMin || probjTitleSize.max !== postTitleMax)
+			return probjTitleSize = {
+				"min": postTitleMin,
+				"max": postTitleMax
+			};
+		return probjTitleSize;
+	};
+
+	const propVoteCooldown = function() {
 		// How many seconds until I can vote again?
 		return (Math.max(0, voteCooldown * 1000 - (Date.now() - parseInt(ls.getItem("DATA-vt") || "0", 36))) || 0) / 1000;
 	};
 
 	/* # Initialization */
-	let pb = window.Postbox = function createPostboxPost(content, title) {
-		// Create a Postbox post.
-		return methodPost(content, title);
+	let pb = window.Postbox = {
+		get bodySize() {
+			return propBodySize();
+		},
+		set bodySize(object) {
+			H4X0R_L33T();
+		},
+		get lastPosted() {
+			return propLastPosted();
+		},
+		set lastPosted(date) {
+			H4X0R_L33T();
+		},
+		get lastVoted() {
+			return propLastVoted();
+		},
+		set lastVoted(date) {
+			H4X0R_L33T();
+		},
+		get postCooldown() {
+			return propPostCooldown();
+		},
+		set postCooldown(seconds) {
+			H4X0R_L33T();
+		},
+		get titleSize() {
+			return propTitleSize();
+		},
+		set titleSize(object) {
+			H4X0R_L33T();
+		},
+		get version() {
+			return "alpha 2.0";
+		},
+		set version(code) {
+			H4X0R_L33T();
+		},
+		get voteCooldown() {
+			return propVoteCooldown();
+		},
+		set voteCooldown(seconds) {
+			H4X0R_L33T();
+		}
 	};
 	pb.allPostIDs = methodAllPostIDs;
-	pb.bodySize = methodBodySize;
 	pb.downvote = methodDownvote;
 	pb.exists = methodExists;
 	pb.generatePostID = methodGeneratePostID;
 	pb.getVoteInfluence = methodGetVoteInfluence;
-	pb.lastPosted = methodLastPosted;
-	pb.lastVoted = methodLastVoted;
 	pb.post = methodPost;
 	pb.removeExpiredPosts = methodRemoveExpiredPosts;
 	pb.read = methodRead;
 	pb.sort = methodSort;
-	pb.titleSize = methodTitleSize;
 	pb.upvote = methodUpvote;
-	pb.version = methodVersion;
-	pb.voteCooldown = methodVoteCooldown;
 
 	let admin = pb.admin = {
 		"hardReset": adminHardReset,
@@ -366,7 +412,7 @@ translate.register({
 		"write": adminWrite
 	};
 
-	if (!gaeFurry) {
+	if (!furtard) {
 		for (var i in admin)
 			switch (typeof admin[i]) {
 				case "boolean":
@@ -389,7 +435,7 @@ translate.register({
 	}
 	admin.amIIn = function ifYouCallThisFunctionYouWatchCNN() {
 		// But not if you're authorized to do so.
-		return !!gaeFurry;
+		return !!furtard;
 	};
 
 	/* # Finalization */

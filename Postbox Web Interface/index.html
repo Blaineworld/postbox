@@ -38,7 +38,7 @@
 			<input type="text" placeholder="Untitled" id="inputtitle" title="Write a title for your post."></textarea>
 			<hr></hr>
 			<textarea placeholder="Content" id="inputcontent" title="Write your post here."></textarea>
-			<button style="top:1.25vh;right:3vw;position:fixed;background:#afc;color:#102" onclick="try{render(Postbox.read(Postbox(inputcontent.value,inputtitle.value)));renderPosts();noVoteStyles.disabled=false;setTimeout(disableNoVoteStyles,Postbox.voteCooldown()*1000);cancelbutton.click()}catch(error){nope.innerText=error;throw error}" title="Publish Your Post"><b>PUT IT UP!</b></button>
+			<button style="top:1.25vh;right:3vw;position:fixed;background:#afc;color:#102" onclick="try{render(Postbox.read(Postbox.post(inputcontent.value,inputtitle.value)));renderPosts();noVoteStyles.disabled=false;setTimeout(disableNoVoteStyles,Postbox.voteCooldown*1000);cancelbutton.click()}catch(error){nope.innerText=error;throw error}" title="Publish Your Post"><b>PUT IT UP!</b></button>
 		</div>
 		<iframe id="help"></iframe>
 		<script language "Javascript" src="showdown.js"></script>

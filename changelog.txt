@@ -10,6 +10,31 @@ GUIDE TO BULLET POINTS (will always be in this order)
   / cancelled/postponed
   ! known bug
 
+--    Alpha 2.0    --
+
+  + Added the emoji Kiss Mark through Writing Hand.
+
+  * The gaeFurry variable is now furtard so the security can still work during
+    gay pride month, even if less so at Chick-Fil-A.
+
+  * The Markdown guide in the manual is now a link instead of a frame.
+
+  * The vote cooldown has been increased to four minutes.
+
+  ~ Certain methods are properties instead because I discovered
+    getters and setters yesterday.
+
+  ~ Postbox is no longer a function. Postpox.post() must be used instead.
+
+  ~ The translation enjine is now compressed.
+
+  ~ The translation engine now runs in strict mode, so hopefully it
+    performs better.
+
+  i The manual now includes the correct post existence time.
+
+  ? Going to start working on making my code more D.R.Y.
+
 --    Alpha 1.5    --
 
   + Added a new original emoji, :uwu:!
